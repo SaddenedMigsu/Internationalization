@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="https://cit.edu/wp-content/uploads/2023/07/cit-logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="IZN Corner — CIT University's Internationalization page featuring global partnerships, student exchange programs, and international collaborations bridging Cebu to the world." />
+    <meta name="keywords" content="CIT University, Internationalization, IZN Corner, Cebu Institute of Technology, Global Partnerships, Student Exchange" />
+    <title>IZN Corner | CIT University – Internationalization</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Open+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'cit-navy': '#003087',
+              'cit-gold': '#FFC107',
+              'cit-light': '#F5F5F5',
+              'cit-navy-dark': '#001f5b',
+              'cit-navy-light': '#004db3',
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+              opensans: ['Open Sans', 'sans-serif'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'fade-in': 'fadeIn 0.6s ease-in-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      * { scroll-behavior: smooth; }
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+      .pulse-ring {
+        animation: pulse-ring 2s ease-out infinite;
+      }
+      @keyframes pulse-ring {
+        0% { transform: scale(0.8); opacity: 0.8; }
+        70% { transform: scale(1.8); opacity: 0; }
+        100% { transform: scale(0.8); opacity: 0; }
+      }
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 48, 135, 0.18);
+      }
+      .pillar-card:hover {
+        border-color: #FFC107 !important;
+        background: linear-gradient(135deg, #003087 0%, #004db3 100%);
+        color: white;
+      }
+      .pillar-card:hover p {
+        color: rgba(255,255,255,0.85);
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-800">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
