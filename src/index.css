@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --cit-navy: #003087;
+  --cit-navy: #7B1C1C;
   --cit-gold: #FFC107;
-  --cit-light: #F5F5F5;
+  --cit-light: #FDF5F5;
 }
 
 * {

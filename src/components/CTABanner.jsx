@@ -3,7 +3,7 @@ export default function CTABanner() {
     <section
       id="cta-banner"
       className="py-20 relative overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #001f5b 0%, #003087 60%, #004db3 100%)' }}
+      style={{ background: 'linear-gradient(135deg, #4A0F0F 0%, #7B1C1C 60%, #9B2335 100%)' }}
     >
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-64 h-64 rounded-full opacity-10 blur-3xl"
@@ -38,7 +38,7 @@ export default function CTABanner() {
             id="contact-izn-office-btn"
             href="mailto:internationalization@cit.edu"
             className="group inline-flex items-center gap-3 px-8 py-4 rounded-full font-poppins font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-            style={{ background: '#FFC107', color: '#003087' }}
+            style={{ background: '#FFC107', color: '#7B1C1C' }}
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />

@@ -62,7 +62,7 @@ export default function ArticleGrid() {
           <button
             id="view-all-articles-btn"
             className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-poppins font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #003087 0%, #004db3 100%)' }}
+            style={{ background: 'linear-gradient(135deg, #7B1C1C 0%, #9B2335 100%)' }}
           >
             <span>View All Articles</span>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

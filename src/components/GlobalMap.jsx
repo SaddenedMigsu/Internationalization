@@ -76,8 +76,19 @@ export default function GlobalMap() {
   };
 
   return (
-    <section id="global-map-section" className="py-20" style={{ background: 'linear-gradient(135deg, #001f5b 0%, #003087 100%)' }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section
+      id="global-map-section"
+      className="relative py-20"
+      style={{
+        backgroundImage: 'url(/redbg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Dark maroon overlay for readability */}
+      <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.70)' }} />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -104,10 +115,10 @@ export default function GlobalMap() {
               viewBox="0 0 900 450"
               className="w-full min-w-[600px]"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ background: '#001440' }}
+              style={{ background: '#2D0808' }}
             >
               {/* Ocean background */}
-              <rect width="900" height="450" fill="#001440" />
+              <rect width="900" height="450" fill="#2D0808" />
 
               {/* Grid lines */}
               <g stroke="#FFC107" strokeWidth="0.3" opacity="0.15">
@@ -122,7 +133,7 @@ export default function GlobalMap() {
               </g>
 
               {/* Continent shapes — stylized SVG world map */}
-              <g fill="#0a2f6e" stroke="#1a4a8a" strokeWidth="0.8">
+              <g fill="#5c1212" stroke="#7B2020" strokeWidth="0.8">
                 {/* North America */}
                 <path d="M 100 60 L 175 50 L 215 80 L 230 110 L 225 150 L 210 175 L 180 195 L 145 200 L 115 185 L 90 155 L 80 115 L 85 80 Z" />
                 {/* Greenland */}
@@ -224,7 +235,7 @@ export default function GlobalMap() {
                       width={tipW}
                       height={tipH}
                       rx="6"
-                      fill="#001f5b"
+                      fill="#4A0F0F"
                       stroke="#FFC107"
                       strokeWidth="1.5"
                     />

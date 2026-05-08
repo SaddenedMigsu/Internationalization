@@ -68,7 +68,7 @@ export default function AboutSection() {
                 <li key={i} className="flex items-start gap-3 font-opensans text-gray-700">
                   <span
                     className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 text-xs font-bold"
-                    style={{ background: '#FFC107', color: '#003087' }}
+                    style={{ background: '#FFC107', color: '#7B1C1C' }}
                   >
                     ✓
                   </span>
@@ -82,7 +82,7 @@ export default function AboutSection() {
           <div className="relative">
             <div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
-              style={{ background: 'linear-gradient(135deg, #003087 0%, #004db3 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #7B1C1C 0%, #9B2335 100%)' }}
             >
               <div className="p-10 text-center">
                 {/* Globe illustration */}
@@ -133,7 +133,7 @@ export default function AboutSection() {
             />
             <div
               className="absolute -bottom-4 -left-4 w-32 h-32 rounded-full opacity-15 blur-xl"
-              style={{ background: '#003087' }}
+              style={{ background: '#7B1C1C' }}
             />
           </div>
         </div>
@@ -145,12 +145,12 @@ export default function AboutSection() {
               key={stat.id}
               id={stat.id}
               className="card-hover rounded-2xl p-8 text-center border border-gray-100 shadow-sm"
-              style={{ background: 'linear-gradient(135deg, #f8faff 0%, #fff 100%)' }}
+              style={{ background: 'linear-gradient(135deg, #fff8f8 0%, #fff 100%)' }}
             >
               <div className="text-4xl mb-3">{stat.icon}</div>
               <div
                 className="font-poppins font-extrabold text-5xl mb-1"
-                style={{ color: '#003087' }}
+                style={{ color: '#7B1C1C' }}
               >
                 {stat.value}
               </div>

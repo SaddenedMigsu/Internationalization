@@ -15,7 +15,7 @@ export default function ArticleCard({ article }) {
           loading="lazy"
           onError={(e) => {
             e.target.src =
-              'https://placehold.co/400x220/003087/FFFFFF?text=CIT+IZN';
+              'https://placehold.co/400x220/7B1C1C/FFFFFF?text=CIT+IZN';
           }}
         />
         {/* Category badge */}

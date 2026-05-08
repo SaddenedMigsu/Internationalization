@@ -65,7 +65,7 @@ export default function Testimonials() {
               </div>
 
               {/* Role badge */}
-              <span className="inline-block mb-4 text-xs font-semibold font-opensans px-3 py-1 rounded-full bg-blue-50 text-cit-navy uppercase tracking-wide w-fit">
+              <span className="inline-block mb-4 text-xs font-semibold font-opensans px-3 py-1 rounded-full bg-red-50 text-cit-navy uppercase tracking-wide w-fit">
                 {t.role}
               </span>
 
@@ -78,7 +78,7 @@ export default function Testimonials() {
               <div className="flex items-center gap-4 pt-5 border-t border-gray-100">
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-inner"
-                  style={{ background: 'linear-gradient(135deg, #003087 0%, #004db3 100%)' }}
+                  style={{ background: 'linear-gradient(135deg, #7B1C1C 0%, #9B2335 100%)' }}
                 >
                   {t.avatar}
                 </div>

@@ -9,9 +9,14 @@ export default function HeroBanner() {
       id="hero-banner"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        background: 'linear-gradient(135deg, #001f5b 0%, #003087 50%, #004db3 100%)',
+        backgroundImage: 'url(/redbg.jpg)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
+      {/* Dark maroon overlay for text readability */}
+      <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.62)' }} />
       {/* World map SVG overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <svg

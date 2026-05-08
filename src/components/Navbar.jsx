@@ -78,7 +78,7 @@ export default function Navbar() {
                       to={link.href}
                       className={`px-3 py-2 rounded-md text-sm font-medium font-opensans transition-colors duration-200 ${
                         isActive
-                          ? 'text-cit-navy font-semibold border-b-2 border-cit-gold bg-blue-50'
+                          ? 'text-cit-navy font-semibold border-b-2 border-cit-gold bg-red-50'
                           : 'text-gray-700 hover:text-cit-navy hover:bg-cit-light'
                       }`}
                     >
@@ -134,7 +134,7 @@ export default function Navbar() {
                       rel="noopener noreferrer"
                       className={`block px-4 py-2.5 rounded-md text-sm font-medium font-opensans transition-colors ${
                         isActive
-                          ? 'text-cit-navy font-semibold bg-blue-50 border-l-4 border-cit-gold'
+                          ? 'text-cit-navy font-semibold bg-red-50 border-l-4 border-cit-gold'
                           : 'text-gray-700 hover:text-cit-navy hover:bg-cit-light'
                       }`}
                       onClick={() => setMenuOpen(false)}
@@ -146,7 +146,7 @@ export default function Navbar() {
                       to={link.href}
                       className={`block px-4 py-2.5 rounded-md text-sm font-medium font-opensans transition-colors ${
                         isActive
-                          ? 'text-cit-navy font-semibold bg-blue-50 border-l-4 border-cit-gold'
+                          ? 'text-cit-navy font-semibold bg-red-50 border-l-4 border-cit-gold'
                           : 'text-gray-700 hover:text-cit-navy hover:bg-cit-light'
                       }`}
                       onClick={() => setMenuOpen(false)}
