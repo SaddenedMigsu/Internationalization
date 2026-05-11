@@ -1,3 +1,5 @@
+import Antigravity from './Antigravity';
+
 export default function HeroBanner() {
   const scrollToArticles = () => {
     const el = document.getElementById('articles-section');
@@ -17,56 +19,36 @@ export default function HeroBanner() {
     >
       {/* Dark maroon overlay for text readability */}
       <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.62)' }} />
-      {/* World map SVG overlay */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <svg
-          viewBox="0 0 1000 500"
-          className="w-full h-full object-cover"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid slice"
-        >
-          {/* Simplified world map paths - continents */}
-          <g fill="#FFFFFF" stroke="#FFC107" strokeWidth="0.5">
-            {/* North America */}
-            <path d="M 130 80 L 200 70 L 240 100 L 260 140 L 230 170 L 200 200 L 160 210 L 130 190 L 110 160 L 100 120 Z" />
-            {/* South America */}
-            <path d="M 200 230 L 240 220 L 260 260 L 260 320 L 240 360 L 210 380 L 185 360 L 175 320 L 180 270 Z" />
-            {/* Europe */}
-            <path d="M 450 60 L 510 55 L 540 80 L 530 110 L 500 120 L 470 115 L 445 95 Z" />
-            {/* Africa */}
-            <path d="M 460 140 L 510 130 L 540 160 L 545 220 L 530 280 L 505 310 L 475 300 L 455 260 L 445 200 L 450 160 Z" />
-            {/* Asia */}
-            <path d="M 545 60 L 680 50 L 740 80 L 750 130 L 720 160 L 680 165 L 640 150 L 600 160 L 570 145 L 545 120 L 540 90 Z" />
-            {/* Australia */}
-            <path d="M 680 270 L 730 260 L 770 275 L 775 315 L 755 340 L 720 345 L 695 330 L 680 305 Z" />
-            {/* Oceania dots */}
-            <circle cx="790" cy="300" r="8" />
-            <circle cx="810" cy="285" r="5" />
-          </g>
-          {/* Grid lines */}
-          <g stroke="#FFC107" strokeWidth="0.3" opacity="0.4">
-            {[100, 200, 300, 400].map((y) => (
-              <line key={`h${y}`} x1="0" y1={y} x2="1000" y2={y} />
-            ))}
-            {[100, 200, 300, 400, 500, 600, 700, 800, 900].map((x) => (
-              <line key={`v${x}`} x1={x} y1="0" x2={x} y2="500" />
-            ))}
-          </g>
-        </svg>
-      </div>
 
-      {/* Decorative circles */}
-      <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full border border-cit-gold opacity-10 animate-pulse" />
-      <div className="absolute bottom-1/4 left-1/4 w-48 h-48 rounded-full border border-white opacity-10 animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Antigravity particle canvas — fills the hero entirely */}
+      <div className="absolute inset-0" style={{ zIndex: 1 }}>
+        <Antigravity
+          count={280}
+          magnetRadius={3}
+          ringRadius={3.5}
+          waveSpeed={0.3}
+          waveAmplitude={0.6}
+          particleSize={0.6}
+          lerpSpeed={0.04}
+          color="#FFC107"
+          autoAnimate={true}
+          particleVariance={0.6}
+          rotationSpeed={0.05}
+          depthFactor={0.5}
+          pulseSpeed={2}
+          particleShape="capsule"
+          fieldStrength={12}
+        />
+      </div>
 
       {/* Gold accent line */}
       <div
         className="absolute bottom-0 left-0 right-0 h-1"
-        style={{ background: '#FFC107' }}
+        style={{ background: '#FFC107', zIndex: 2 }}
       />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative max-w-5xl mx-auto px-6 text-center" style={{ zIndex: 3 }}>
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-8">
           <span className="text-cit-gold font-semibold text-sm font-opensans tracking-wider uppercase">
@@ -151,7 +133,7 @@ export default function HeroBanner() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce" style={{ zIndex: 3 }}>
         <svg className="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
         </svg>

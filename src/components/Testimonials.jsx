@@ -5,7 +5,7 @@ const testimonials = [
       "This program reflects CIT University\u2019s commitment to opening our doors to international opportunities while also promoting a global perspective among our students and faculty. Our internationalization initiatives are a testament to CIT\u2019s vision of producing graduates who are not only technically competent but globally competitive and culturally aware.",
     name: 'Engr. Bernard Nicolas E. Villamor',
     title: 'University President, CIT University',
-    avatar: '🎓',
+    photo: '/Bernard.jpg',
     role: 'University Leadership',
   },
   {
@@ -14,7 +14,7 @@ const testimonials = [
       'My internship in Dubai was the most transformative experience of my academic journey. CIT prepared me not just technically but culturally — the university gave me the confidence to compete and excel on an international stage. I am proud to represent CIT University in the global arena.',
     name: 'Dave Andrey Mosqueda',
     title: 'BS Architecture Graduate | Dubai Intern, XYZ Designers UAE',
-    avatar: '🏛️',
+    photo: '/Dave.jpg',
     role: 'CIT Graduate',
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
       'The internationalization initiatives at CIT have fundamentally changed how we teach. By integrating global standards into our curriculum and connecting our students with real-world international experiences, we are preparing them for careers that transcend borders.',
     name: 'Dr. Larmie S. Feliscuzo',
     title: 'Director, Internationalization Office — CIT University',
-    avatar: '🌍',
+    photo: '/Larmie.png',
     role: 'IZN Office Director',
   },
 ];
@@ -76,11 +76,12 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 pt-5 border-t border-gray-100">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-2xl flex-shrink-0 shadow-inner"
-                  style={{ background: 'linear-gradient(135deg, #7B1C1C 0%, #9B2335 100%)' }}
-                >
-                  {t.avatar}
+                <div className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden ring-2 ring-cit-gold/40 shadow-md">
+                  <img
+                    src={t.photo}
+                    alt={t.name}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <div>
                   <div className="font-poppins font-bold text-cit-navy text-sm">

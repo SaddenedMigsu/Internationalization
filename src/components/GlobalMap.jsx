@@ -1,78 +1,78 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
+// Partner markers — coordinates mapped to the 1000×507 viewBox
 const partners = [
   {
     id: 'france',
     name: 'France',
     flag: '🇫🇷',
     note: 'Maternelle Academy — French OJT Program & Language Collaboration',
-    cx: '460',
-    cy: '105',
+    cx: 480,
+    cy: 180,
   },
   {
     id: 'uae',
     name: 'UAE (Dubai)',
     flag: '🇦🇪',
     note: 'XYZ Designers Dubai — BS Architecture International Internship Program',
-    cx: '565',
-    cy: '148',
+    cx: 610,
+    cy: 240,
   },
   {
     id: 'usa',
     name: 'United States',
     flag: '🇺🇸',
     note: 'ServiceNow — AI & Digital Workflow Certifications Partnership',
-    cx: '165',
-    cy: '128',
+    cx: 220,
+    cy: 205,
   },
   {
     id: 'japan',
     name: 'Japan',
     flag: '🇯🇵',
     note: 'Japanese University Partners — Academic Exchange & Research Collaboration',
-    cx: '740',
-    cy: '118',
+    cx: 815,
+    cy: 200,
   },
   {
     id: 'germany',
     name: 'Germany',
     flag: '🇩🇪',
     note: 'German Academic Partners — Engineering & Technology Collaboration',
-    cx: '478',
-    cy: '88',
+    cx: 497,
+    cy: 165,
   },
   {
     id: 'south-korea',
     name: 'South Korea',
     flag: '🇰🇷',
     note: 'Korean University Partners — Technology & Innovation Exchange Programs',
-    cx: '718',
-    cy: '105',
+    cx: 783,
+    cy: 200,
   },
   {
     id: 'australia',
     name: 'Australia',
     flag: '🇦🇺',
     note: 'Australian University Network — Pacific Region Academic Partnerships',
-    cx: '730',
-    cy: '290',
+    cx: 790,
+    cy: 360,
   },
 ];
 
+// CIT-U home base — Philippines
+const CITU = { cx: 775, cy: 273 };
+
 export default function GlobalMap() {
   const [tooltip, setTooltip] = useState(null);
-  const svgRef = useRef(null);
+  const [activeId, setActiveId] = useState(null);
 
-  const handleDotClick = (partner) => {
-    setTooltip(tooltip?.id === partner.id ? null : { ...partner });
-  };
-
-  const handleDotEnter = (partner) => {
-    setTooltip({ ...partner });
-  };
-
-  const handleDotLeave = () => {
-    setTooltip(null);
+  const handleEnter = (p) => { setTooltip(p); setActiveId(p.id); };
+  const handleLeave = () => { setTooltip(null); setActiveId(null); };
+  const handleClick = (p) => {
+    const next = activeId === p.id ? null : p.id;
+    setActiveId(next);
+    setTooltip(next ? p : null);
   };
 
   return (
@@ -86,8 +86,8 @@ export default function GlobalMap() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Dark maroon overlay for readability */}
-      <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.70)' }} />
+      <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.72)' }} />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
@@ -102,146 +102,168 @@ export default function GlobalMap() {
             Our Global Partners
           </h2>
           <p className="font-opensans text-white/70 max-w-2xl mx-auto text-base">
-            Click or hover on the markers to explore CIT University's international partnerships
+            Hover or click the markers to explore CIT University's international partnerships
             across the globe.
           </p>
         </div>
 
         {/* Map container */}
         <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl mb-10">
-          <div className="relative overflow-x-auto">
+          <style>{`
+            @keyframes pulseRing {
+              0%   { r: 8;  opacity: 0.8; }
+              100% { r: 24; opacity: 0;   }
+            }
+            .pulse-a { animation: pulseRing 2s ease-out infinite; }
+            .pulse-b { animation: pulseRing 2s ease-out infinite 0.7s; }
+            .pulse-c { animation: pulseRing 2s ease-out infinite 1.4s; }
+            @keyframes dashFlow {
+              to { stroke-dashoffset: -20; }
+            }
+            .flow-line {
+              stroke-dasharray: 4 6;
+              animation: dashFlow 1.5s linear infinite;
+            }
+            @keyframes dotBob {
+              0%, 100% { transform: translateY(0px); }
+              50%       { transform: translateY(-3px); }
+            }
+            .home-dot { animation: dotBob 2s ease-in-out infinite; }
+          `}</style>
+
+          {/* Map image */}
+          <div className="relative w-full" style={{ aspectRatio: '1000 / 507' }}>
+            <img
+              src="/redmap.jpg"
+              alt="World Map"
+              className="absolute inset-0 w-full h-full object-cover"
+              draggable="false"
+            />
+
+            {/* SVG overlay — same viewBox as image ratio */}
             <svg
-              ref={svgRef}
-              viewBox="0 0 900 450"
-              className="w-full min-w-[600px]"
+              viewBox="0 0 1000 507"
+              className="absolute inset-0 w-full h-full"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ background: '#2D0808' }}
+              style={{ overflow: 'visible' }}
             >
-              {/* Ocean background */}
-              <rect width="900" height="450" fill="#2D0808" />
+              <defs>
+                <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#000" floodOpacity="0.5" />
+                </filter>
+                <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
 
-              {/* Grid lines */}
-              <g stroke="#FFC107" strokeWidth="0.3" opacity="0.15">
-                {[75, 150, 225, 300, 375].map((y) => (
-                  <line key={`h${y}`} x1="0" y1={y} x2="900" y2={y} />
-                ))}
-                {[90, 180, 270, 360, 450, 540, 630, 720, 810].map((x) => (
-                  <line key={`v${x}`} x1={x} y1="0" x2={x} y2="450" />
-                ))}
-                {/* Equator */}
-                <line x1="0" y1="225" x2="900" y2="225" stroke="#FFC107" strokeWidth="0.8" opacity="0.3" />
-              </g>
-
-              {/* Continent shapes — stylized SVG world map */}
-              <g fill="#5c1212" stroke="#7B2020" strokeWidth="0.8">
-                {/* North America */}
-                <path d="M 100 60 L 175 50 L 215 80 L 230 110 L 225 150 L 210 175 L 180 195 L 145 200 L 115 185 L 90 155 L 80 115 L 85 80 Z" />
-                {/* Greenland */}
-                <path d="M 195 30 L 235 25 L 250 45 L 240 65 L 210 68 L 195 55 Z" />
-                {/* Central America */}
-                <path d="M 170 200 L 195 195 L 205 215 L 195 230 L 175 225 Z" />
-                {/* Caribbean */}
-                <ellipse cx="225" cy="205" rx="15" ry="8" />
-                {/* South America */}
-                <path d="M 185 240 L 235 228 L 260 255 L 268 300 L 265 350 L 248 385 L 220 398 L 195 385 L 178 355 L 170 310 L 172 265 Z" />
-                {/* Western Europe */}
-                <path d="M 415 55 L 468 48 L 500 65 L 505 90 L 490 105 L 462 110 L 435 100 L 415 80 Z" />
-                {/* Scandinavia */}
-                <path d="M 445 30 L 475 25 L 490 45 L 480 65 L 458 68 L 442 55 Z" />
-                {/* Eastern Europe / Western Asia */}
-                <path d="M 500 55 L 565 48 L 600 70 L 605 100 L 590 120 L 560 125 L 525 115 L 500 95 Z" />
-                {/* Africa */}
-                <path d="M 430 135 L 490 125 L 525 150 L 535 200 L 530 265 L 510 310 L 485 330 L 455 325 L 430 295 L 415 250 L 412 195 L 418 155 Z" />
-                {/* Middle East */}
-                <path d="M 530 120 L 590 110 L 615 130 L 618 160 L 600 175 L 570 170 L 545 155 Z" />
-                {/* Central Asia */}
-                <path d="M 600 65 L 680 55 L 720 75 L 730 105 L 715 125 L 680 130 L 645 120 L 615 105 Z" />
-                {/* Indian Subcontinent */}
-                <path d="M 600 130 L 650 125 L 665 145 L 660 180 L 640 200 L 615 195 L 600 170 Z" />
-                {/* East Asia */}
-                <path d="M 690 60 L 770 55 L 800 80 L 805 115 L 785 135 L 755 140 L 720 130 L 695 110 Z" />
-                {/* Southeast Asia */}
-                <path d="M 680 145 L 720 140 L 745 160 L 750 185 L 730 200 L 705 195 L 685 175 Z" />
-                {/* Philippines dot */}
-                <circle cx="745" cy="180" r="6" fill="#FFC107" opacity="0.7" />
-                {/* Japan */}
-                <path d="M 775 80 L 800 78 L 815 95 L 810 115 L 790 120 L 772 108 Z" />
-                {/* Australia */}
-                <path d="M 690 260 L 760 255 L 800 275 L 808 320 L 795 355 L 760 368 L 725 360 L 700 335 L 688 295 Z" />
-                {/* New Zealand */}
-                <path d="M 815 320 L 835 315 L 845 335 L 838 355 L 820 350 L 812 335 Z" />
-                {/* UK / Ireland */}
-                <ellipse cx="420" cy="60" rx="12" ry="18" />
-                {/* Iceland */}
-                <ellipse cx="385" cy="40" rx="14" ry="10" />
-              </g>
-
-              {/* Partner marker dots with pulse rings */}
+              {/* Connection lines from CIT-U to each partner */}
               {partners.map((p) => (
-                <g key={p.id}>
-                  {/* Pulse rings */}
-                  <circle
-                    cx={p.cx}
-                    cy={p.cy}
-                    r="14"
-                    fill="none"
-                    stroke="#FFC107"
-                    strokeWidth="1.5"
-                    opacity="0"
-                    className="pulse-ring"
-                    style={{ transformOrigin: `${p.cx}px ${p.cy}px`, animationDelay: `${Math.random() * 2}s` }}
-                  />
-                  <circle
-                    cx={p.cx}
-                    cy={p.cy}
-                    r="10"
-                    fill="none"
-                    stroke="#FFC107"
-                    strokeWidth="1"
-                    opacity="0"
-                    className="pulse-ring"
-                    style={{ transformOrigin: `${p.cx}px ${p.cy}px`, animationDelay: `${Math.random() * 2 + 0.5}s` }}
-                  />
-                  {/* Clickable dot */}
-                  <circle
-                    cx={p.cx}
-                    cy={p.cy}
-                    r="7"
-                    fill={tooltip?.id === p.id ? '#FFD54F' : '#FFC107'}
-                    stroke="white"
-                    strokeWidth="2"
-                    className="cursor-pointer hover:scale-125 transition-transform"
-                    style={{ transformOrigin: `${p.cx}px ${p.cy}px` }}
-                    onMouseEnter={() => handleDotEnter(p)}
-                    onMouseLeave={handleDotLeave}
-                    onClick={() => handleDotClick(p)}
-                  />
-                </g>
+                <line
+                  key={`line-${p.id}`}
+                  x1={CITU.cx} y1={CITU.cy}
+                  x2={p.cx} y2={p.cy}
+                  stroke="#FFC107"
+                  strokeWidth={activeId === p.id ? 1.6 : 0.8}
+                  opacity={activeId === p.id ? 0.9 : 0.3}
+                  strokeLinecap="round"
+                  className="flow-line transition-all duration-300"
+                />
               ))}
 
-              {/* Tooltip in SVG */}
-              {tooltip && (() => {
-                const cx = Number(tooltip.cx);
-                const cy = Number(tooltip.cy);
-                const tipW = 180;
-                const tipH = 70;
-                const tipX = Math.min(Math.max(cx - tipW / 2, 5), 900 - tipW - 5);
-                const tipY = cy < 80 ? cy + 15 : cy - tipH - 15;
+              {/* CIT-U home marker */}
+              <g className="home-dot" style={{ transformOrigin: `${CITU.cx}px ${CITU.cy}px` }}>
+                <circle cx={CITU.cx} cy={CITU.cy} r="12" fill="#FFC107" opacity="0.15" />
+                <circle cx={CITU.cx} cy={CITU.cy} r="7" fill="#FFC107" filter="url(#glow)" />
+                <circle cx={CITU.cx} cy={CITU.cy} r="3" fill="white" />
+              </g>
+              <text
+                x={CITU.cx} y={CITU.cy + 20}
+                textAnchor="middle"
+                fill="#FFC107"
+                fontSize="9"
+                fontFamily="Poppins, sans-serif"
+                fontWeight="bold"
+                opacity="0.95"
+              >
+                CIT-U
+              </text>
+
+              {/* Partner markers */}
+              {partners.map((p, i) => {
+                const pulseClasses = ['pulse-a', 'pulse-b', 'pulse-c'];
+                const cls = pulseClasses[i % 3];
+                const isActive = activeId === p.id;
                 return (
-                  <g>
-                    <rect
-                      x={tipX}
-                      y={tipY}
-                      width={tipW}
-                      height={tipH}
-                      rx="6"
-                      fill="#4A0F0F"
+                  <g key={p.id}>
+                    {/* Pulse ring */}
+                    <circle
+                      cx={p.cx} cy={p.cy}
+                      fill="none"
                       stroke="#FFC107"
                       strokeWidth="1.5"
+                      opacity="0"
+                      r="8"
+                      className={cls}
+                    />
+                    {/* Active glow */}
+                    {isActive && (
+                      <circle cx={p.cx} cy={p.cy} r="16" fill="#FFC107" opacity="0.2" />
+                    )}
+                    {/* Main dot */}
+                    <circle
+                      cx={p.cx} cy={p.cy}
+                      r={isActive ? 9 : 7}
+                      fill={isActive ? '#FFD54F' : '#FFC107'}
+                      stroke="white"
+                      strokeWidth="2"
+                      filter="url(#glow)"
+                      className="cursor-pointer transition-all duration-200"
+                      onMouseEnter={() => handleEnter(p)}
+                      onMouseLeave={handleLeave}
+                      onClick={() => handleClick(p)}
+                    />
+                  </g>
+                );
+              })}
+
+              {/* Tooltip */}
+              {tooltip && (() => {
+                const cx = tooltip.cx;
+                const cy = tooltip.cy;
+                const tipW = 205;
+                const tipH = 80;
+                const tipX = Math.min(Math.max(cx - tipW / 2, 8), 1000 - tipW - 8);
+                const tipY = cy < 110 ? cy + 20 : cy - tipH - 20;
+                return (
+                  <g>
+                    {/* Arrow */}
+                    <line
+                      x1={cx} y1={cy < 110 ? cy + 9 : cy - 9}
+                      x2={cx} y2={tipY + (cy < 110 ? 0 : tipH)}
+                      stroke="#FFC107" strokeWidth="1.2" opacity="0.6"
+                    />
+                    {/* Card */}
+                    <rect
+                      x={tipX} y={tipY}
+                      width={tipW} height={tipH}
+                      rx="8" ry="8"
+                      fill="#3B0A0A"
+                      stroke="#FFC107"
+                      strokeWidth="1.5"
+                      filter="url(#shadow)"
+                    />
+                    {/* Gold top accent */}
+                    <rect
+                      x={tipX} y={tipY}
+                      width={tipW} height="22"
+                      rx="8" fill="#FFC107" opacity="0.15"
                     />
                     <text
-                      x={tipX + tipW / 2}
-                      y={tipY + 22}
+                      x={tipX + tipW / 2} y={tipY + 15}
                       textAnchor="middle"
                       fill="#FFC107"
                       fontSize="11"
@@ -250,21 +272,15 @@ export default function GlobalMap() {
                     >
                       {tooltip.flag} {tooltip.name}
                     </text>
-                    {/* Wrap note text */}
-                    <foreignObject x={tipX + 8} y={tipY + 30} width={tipW - 16} height={tipH - 35}>
+                    <foreignObject x={tipX + 8} y={tipY + 27} width={tipW - 16} height={tipH - 32}>
                       <div xmlns="http://www.w3.org/1999/xhtml"
-                        style={{ fontSize: '9px', color: 'rgba(255,255,255,0.85)', fontFamily: 'Open Sans, sans-serif', lineHeight: '1.3' }}>
+                        style={{ fontSize: '9px', color: 'rgba(255,255,255,0.88)', fontFamily: 'Open Sans, sans-serif', lineHeight: '1.4' }}>
                         {tooltip.note}
                       </div>
                     </foreignObject>
                   </g>
                 );
               })()}
-
-              {/* CIT Philippines label */}
-              <text x="745" y="200" textAnchor="middle" fill="#FFC107" fontSize="9" fontFamily="Poppins, sans-serif" fontWeight="bold">
-                CIT-U
-              </text>
             </svg>
           </div>
         </div>
@@ -279,10 +295,11 @@ export default function GlobalMap() {
               <button
                 key={p.id}
                 id={`flag-pill-${p.id}`}
-                onMouseEnter={() => setTooltip(p)}
-                onMouseLeave={() => setTooltip(null)}
-                onClick={() => handleDotClick(p)}
+                onMouseEnter={() => handleEnter(p)}
+                onMouseLeave={handleLeave}
+                onClick={() => handleClick(p)}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white text-sm font-opensans hover:border-cit-gold hover:bg-white/20 transition-all duration-200 cursor-pointer"
+                style={{ borderColor: activeId === p.id ? '#FFC107' : undefined }}
               >
                 <span className="text-xl">{p.flag}</span>
                 <span>{p.name}</span>
