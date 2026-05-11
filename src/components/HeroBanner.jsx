@@ -1,4 +1,5 @@
 import Antigravity from './Antigravity';
+import StarBorder from './StarBorder';
 
 export default function HeroBanner() {
   const scrollToArticles = () => {
@@ -81,15 +82,19 @@ export default function HeroBanner() {
 
         {/* CTA Button */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
+          <StarBorder
+            as="button"
             id="explore-global-reach-btn"
             onClick={scrollToArticles}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full font-poppins font-semibold text-cit-navy text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-            style={{ background: '#FFC107' }}
+            color="white"
+            speed="4s"
+            thickness={6}
+            className="explore-star-btn"
           >
             <span>Explore Our Global Reach</span>
             <svg
-              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+              width="20"
+              height="20"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -101,16 +106,20 @@ export default function HeroBanner() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </button>
+          </StarBorder>
 
-          <a
+          <StarBorder
+            as="a"
             href="https://cit.edu/sdg-corner/sdg17/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-poppins font-semibold text-white border-2 border-white/40 text-lg hover:border-white hover:bg-white/10 transition-all duration-300"
+            color="white"
+            speed="4s"
+            thickness={6}
+            className="sdg-star-btn"
           >
             SDG Corner
-          </a>
+          </StarBorder>
         </div>
 
         {/* Stats preview */}

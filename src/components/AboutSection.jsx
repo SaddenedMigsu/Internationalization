@@ -1,3 +1,5 @@
+import BorderGlow from './BorderGlow';
+
 export default function AboutSection() {
   const stats = [
     {
@@ -141,27 +143,38 @@ export default function AboutSection() {
         {/* Stats strip */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {stats.map((stat) => (
-            <div
+            <BorderGlow
               key={stat.id}
-              id={stat.id}
-              className="card-hover rounded-2xl p-8 text-center border border-gray-100 shadow-sm"
-              style={{ background: 'linear-gradient(135deg, #fff8f8 0%, #fff 100%)' }}
+              backgroundColor="#fff8f8"
+              borderRadius={16}
+              glowColor="40 70 65"
+              glowIntensity={1.2}
+              glowRadius={36}
+              edgeSensitivity={25}
+              coneSpread={28}
+              colors={['#FFC107', '#7B1C1C', '#e8a000']}
+              className="w-full"
             >
-              <div className="text-4xl mb-3">{stat.icon}</div>
               <div
-                className="font-poppins font-extrabold text-5xl mb-1"
-                style={{ color: '#7B1C1C' }}
+                id={stat.id}
+                className="p-8 text-center w-full"
               >
-                {stat.value}
+                <div className="text-4xl mb-3">{stat.icon}</div>
+                <div
+                  className="font-poppins font-extrabold text-5xl mb-1"
+                  style={{ color: '#7B1C1C' }}
+                >
+                  {stat.value}
+                </div>
+                <div className="font-poppins font-semibold text-gray-800 text-lg mb-2">
+                  {stat.label}
+                </div>
+                <div className="font-opensans text-gray-500 text-sm leading-relaxed">
+                  {stat.description}
+                </div>
+                <div className="mt-4 h-1 w-16 mx-auto rounded-full" style={{ background: '#FFC107' }} />
               </div>
-              <div className="font-poppins font-semibold text-gray-800 text-lg mb-2">
-                {stat.label}
-              </div>
-              <div className="font-opensans text-gray-500 text-sm leading-relaxed">
-                {stat.description}
-              </div>
-              <div className="mt-4 h-1 w-16 mx-auto rounded-full" style={{ background: '#FFC107' }} />
-            </div>
+            </BorderGlow>
           ))}
         </div>
       </div>

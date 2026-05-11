@@ -1,0 +1,131 @@
+.star-border-container {
+  display: inline-block;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.border-gradient-bottom {
+  position: absolute;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  bottom: -12px;
+  right: -250%;
+  border-radius: 50%;
+  animation: star-movement-bottom linear infinite alternate;
+  z-index: 0;
+}
+
+.border-gradient-top {
+  position: absolute;
+  opacity: 0.7;
+  width: 300%;
+  height: 50%;
+  top: -12px;
+  left: -250%;
+  border-radius: 50%;
+  animation: star-movement-top linear infinite alternate;
+  z-index: 0;
+}
+
+.inner-content {
+  position: relative;
+  border: 1px solid #222;
+  background: #000;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 16px 26px;
+  border-radius: 20px;
+  z-index: 1;
+}
+
+/* Shared gradient fixes for hero buttons */
+.explore-star-btn .border-gradient-bottom,
+.sdg-star-btn .border-gradient-bottom {
+  bottom: -4px;
+  opacity: 1;
+  height: 70%;
+}
+
+.explore-star-btn .border-gradient-top,
+.sdg-star-btn .border-gradient-top {
+  top: -4px;
+  opacity: 1;
+  height: 70%;
+}
+
+/* Hero primary button override — gold CIT style */
+.explore-star-btn .inner-content {
+  background: #FFC107;
+  border: 2px solid #e6ac00;
+  color: #1a0a00;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+.explore-star-btn:hover .inner-content {
+  background: #ffca28;
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.45);
+  transform: scale(1.04);
+}
+
+.explore-star-btn {
+  border-radius: 9999px !important;
+}
+
+/* Hero SDG Corner override — glass style to match the hero section */
+.sdg-star-btn .inner-content {
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem; /* text-lg */
+  padding: 14px 32px;
+  border-radius: 9999px; /* pill shape */
+  backdrop-filter: blur(4px);
+  transition: border-color 0.3s, background 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sdg-star-btn:hover .inner-content {
+  border-color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sdg-star-btn {
+  border-radius: 9999px !important;
+}
+
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
