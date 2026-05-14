@@ -6,62 +6,96 @@ const partners = [
     id: 'france',
     name: 'France',
     flag: '🇫🇷',
+    flagCode: 'fr',
     note: 'Maternelle Academy — French OJT Program & Language Collaboration',
-    cx: 480,
-    cy: 180,
+    cx: 470,
+    cy: 175,
   },
   {
     id: 'uae',
     name: 'UAE (Dubai)',
     flag: '🇦🇪',
+    flagCode: 'ae',
     note: 'XYZ Designers Dubai — BS Architecture International Internship Program',
-    cx: 610,
-    cy: 240,
+    cx: 623,
+    cy: 225,
   },
   {
     id: 'usa',
     name: 'United States',
     flag: '🇺🇸',
+    flagCode: 'us',
     note: 'ServiceNow — AI & Digital Workflow Certifications Partnership',
-    cx: 220,
-    cy: 205,
+    cx: 210,
+    cy: 180,
   },
   {
     id: 'japan',
     name: 'Japan',
     flag: '🇯🇵',
+    flagCode: 'jp',
     note: 'Japanese University Partners — Academic Exchange & Research Collaboration',
-    cx: 815,
-    cy: 200,
+    cx: 845,
+    cy: 190,
   },
   {
     id: 'germany',
     name: 'Germany',
     flag: '🇩🇪',
+    flagCode: 'de',
     note: 'German Academic Partners — Engineering & Technology Collaboration',
-    cx: 497,
-    cy: 165,
+    cx: 485,
+    cy: 158,
   },
   {
     id: 'south-korea',
     name: 'South Korea',
     flag: '🇰🇷',
+    flagCode: 'kr',
     note: 'Korean University Partners — Technology & Innovation Exchange Programs',
-    cx: 783,
-    cy: 200,
+    cx: 818,
+    cy: 185,
   },
   {
     id: 'australia',
     name: 'Australia',
     flag: '🇦🇺',
+    flagCode: 'au',
     note: 'Australian University Network — Pacific Region Academic Partnerships',
-    cx: 790,
+    cx: 820,
     cy: 360,
+  },
+  {
+    id: 'india',
+    name: 'India',
+    flag: '🇮🇳',
+    flagCode: 'in',
+    note: 'Indian University Partners — Engineering, Technology & Research Collaboration',
+    cx: 690,
+    cy: 230,
+  },
+  {
+    id: 'taiwan',
+    name: 'Taiwan',
+    flag: '🇹🇼',
+    flagCode: 'tw',
+    note: 'Taiwanese University Partners — Academic Exchange & Innovation Programs',
+    cx: 800,
+    cy: 228,
+  },
+  {
+    id: 'malaysia',
+    name: 'Malaysia',
+    flag: '🇲🇾',
+    flagCode: 'my',
+    note: 'Universiti Sains Malaysia — ASEAN Academic & Cultural Exchange',
+    cx: 780,
+    cy: 280,
   },
 ];
 
 // CIT-U home base — Philippines
-const CITU = { cx: 775, cy: 273 };
+const CITU = { cx: 810, cy: 260 };
 
 export default function GlobalMap() {
   const [tooltip, setTooltip] = useState(null);
@@ -78,30 +112,23 @@ export default function GlobalMap() {
   return (
     <section
       id="global-map-section"
-      className="relative py-20"
-      style={{
-        backgroundImage: 'url(/redbg.jpg)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className="relative py-20 bg-gray-50"
     >
-      <div className="absolute inset-0" style={{ background: 'rgba(50, 8, 8, 0.72)' }} />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="h-px w-10 bg-cit-gold" />
-            <span className="font-opensans text-sm font-semibold text-cit-gold uppercase tracking-widest">
+            <div className="h-px w-10 bg-[#7B1C1C]" />
+            <span className="font-opensans text-sm font-semibold text-[#7B1C1C] uppercase tracking-widest">
               Global Network
             </span>
-            <div className="h-px w-10 bg-cit-gold" />
+            <div className="h-px w-10 bg-[#7B1C1C]" />
           </div>
-          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-white mb-4">
+          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-gray-900 mb-4">
             Our Global Partners
           </h2>
-          <p className="font-opensans text-white/70 max-w-2xl mx-auto text-base">
+          <p className="font-opensans text-gray-500 max-w-2xl mx-auto text-base">
             Hover or click the markers to explore CIT University's international partnerships
             across the globe.
           </p>
@@ -134,7 +161,7 @@ export default function GlobalMap() {
           {/* Map image */}
           <div className="relative w-full" style={{ aspectRatio: '1000 / 507' }}>
             <img
-              src="/redmap.jpg"
+              src="/whitemap.png"
               alt="World Map"
               className="absolute inset-0 w-full h-full object-cover"
               draggable="false"
@@ -287,10 +314,13 @@ export default function GlobalMap() {
 
         {/* Partner flag pills */}
         <div className="text-center">
-          <p className="font-opensans text-white/60 text-sm mb-5 uppercase tracking-wider">
+          <p className="font-opensans text-gray-500 text-sm mb-5 uppercase tracking-wider">
             Partner Nations
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div
+            className="grid gap-3 max-w-3xl mx-auto"
+            style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}
+          >
             {partners.map((p) => (
               <button
                 key={p.id}
@@ -298,10 +328,21 @@ export default function GlobalMap() {
                 onMouseEnter={() => handleEnter(p)}
                 onMouseLeave={handleLeave}
                 onClick={() => handleClick(p)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm text-white text-sm font-opensans hover:border-cit-gold hover:bg-white/20 transition-all duration-200 cursor-pointer"
-                style={{ borderColor: activeId === p.id ? '#FFC107' : undefined }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
+                style={{
+                  borderColor: activeId === p.id ? '#7B1C1C' : '#D1D5DB',
+                  color: activeId === p.id ? '#7B1C1C' : '#374151',
+                  fontWeight: activeId === p.id ? '600' : '400',
+                }}
               >
-                <span className="text-xl">{p.flag}</span>
+                <img
+                  src={`https://flagcdn.com/w20/${p.flagCode}.png`}
+                  srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`}
+                  width="20"
+                  height="15"
+                  alt={p.name}
+                  className="rounded-sm object-cover flex-shrink-0"
+                />
                 <span>{p.name}</span>
               </button>
             ))}

@@ -12,24 +12,17 @@ export default function ArticleGrid() {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <section id="articles-section" className="py-20 bg-cit-light">
+    <section id="articles-section" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="h-px w-10 bg-cit-gold" />
-            <span className="font-opensans text-sm font-semibold text-cit-gold uppercase tracking-widest">
-              Stories & Milestones
-            </span>
-            <div className="h-px w-10 bg-cit-gold" />
-          </div>
-          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-cit-navy mb-4">
-            Global Stories & Milestones
+        {/* Header — plain and editorial */}
+        <div className="text-center mb-10">
+          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-gray-900 mb-3">
+            IZN Corner
           </h2>
-          <p className="font-opensans text-gray-600 max-w-2xl mx-auto text-base">
-            Discover how CIT University students and faculty are making their mark on the world
-            stage through partnerships, exchanges, and international achievements.
+          <p className="font-opensans text-gray-500 max-w-2xl mx-auto text-base">
+            Stories, partnerships, and milestones from CIT University's Internationalization Office.
           </p>
+          <div className="mt-4 mx-auto w-16 h-1 bg-[#7B1C1C]" />
         </div>
 
         {/* Category filter pills */}
@@ -37,12 +30,12 @@ export default function ArticleGrid() {
           {categories.map((cat) => (
             <button
               key={cat}
-              id={`filter-${cat.toLowerCase().replace(' ', '-')}`}
+              id={`filter-${cat.toLowerCase().replace(/\s+/g, '-')}`}
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2 rounded-full text-sm font-semibold font-opensans border transition-all duration-200 ${
                 activeCategory === cat
-                  ? 'bg-cit-navy text-white border-cit-navy shadow-md'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-cit-navy hover:text-cit-navy'
+                  ? 'bg-[#7B1C1C] text-white border-[#7B1C1C]'
+                  : 'bg-white text-gray-600 border-gray-300 hover:border-[#7B1C1C] hover:text-[#7B1C1C]'
               }`}
             >
               {cat}
@@ -50,25 +43,27 @@ export default function ArticleGrid() {
           ))}
         </div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+        {/* Cards grid — 3 columns like SDG17 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {filtered.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
         </div>
 
-        {/* View all CTA */}
-        <div className="text-center mt-12">
-          <button
+        {/* View all CTA — plain link style */}
+        <div className="text-center mt-10">
+          <a
             id="view-all-articles-btn"
-            className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-poppins font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #7B1C1C 0%, #9B2335 100%)' }}
+            href="https://cit.edu/news-and-updates/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-poppins font-semibold text-sm text-[#7B1C1C] border border-[#7B1C1C] px-6 py-2.5 hover:bg-[#7B1C1C] hover:text-white transition-colors duration-200"
           >
-            <span>View All Articles</span>
+            View All Articles on CIT.edu
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,8 +1,7 @@
 import Navbar from '../components/Navbar';
-import HeroBanner from '../components/HeroBanner';
-import AboutSection from '../components/AboutSection';
 import ArticleGrid from '../components/ArticleGrid';
 import GlobalMap from '../components/GlobalMap';
+import AboutSection from '../components/AboutSection';
 import Pillars from '../components/Pillars';
 import Testimonials from '../components/Testimonials';
 import CTABanner from '../components/CTABanner';
@@ -14,27 +13,24 @@ export default function IznCorner() {
       {/* Sticky Navbar */}
       <Navbar />
 
-      {/* Offset for sticky navbar (height ~65px including 4px accent bar) */}
+      {/* Offset for sticky navbar */}
       <main className="flex-1 pt-[69px]">
-        {/* 1. Hero Banner */}
-        <HeroBanner />
-
-        {/* 2. About Internationalization */}
-        <AboutSection />
-
-        {/* 3. Featured Articles Grid */}
+        {/* 1. Featured Articles Grid — first thing users see */}
         <ArticleGrid />
 
-        {/* 4. Interactive Global Map */}
+        {/* 2. Interactive Global Map */}
         <GlobalMap />
 
-        {/* 5. Four Pillars */}
+        {/* 3. About Internationalization */}
+        <AboutSection />
+
+        {/* 4. Four Pillars */}
         <Pillars />
 
-        {/* 6. Testimonials */}
+        {/* 5. Testimonials */}
         <Testimonials />
 
-        {/* 7. Call to Action */}
+        {/* 6. Call to Action */}
         <CTABanner />
       </main>
 
