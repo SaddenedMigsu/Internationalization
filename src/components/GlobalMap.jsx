@@ -11,15 +11,7 @@ const partners = [
     cx: 470,
     cy: 175,
   },
-  {
-    id: 'uae',
-    name: 'UAE (Dubai)',
-    flag: '🇦🇪',
-    flagCode: 'ae',
-    note: 'XYZ Designers Dubai — BS Architecture International Internship Program',
-    cx: 623,
-    cy: 225,
-  },
+
   {
     id: 'usa',
     name: 'United States',
@@ -38,15 +30,7 @@ const partners = [
     cx: 845,
     cy: 190,
   },
-  {
-    id: 'germany',
-    name: 'Germany',
-    flag: '🇩🇪',
-    flagCode: 'de',
-    note: 'German Academic Partners — Engineering & Technology Collaboration',
-    cx: 485,
-    cy: 158,
-  },
+
   {
     id: 'south-korea',
     name: 'South Korea',
