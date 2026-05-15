@@ -1,30 +1,33 @@
 const testimonials = [
   {
-    id: 'testimonial-villamor',
+    id: 'testimonial-maranga',
     quote:
-      "This program reflects CIT University\u2019s commitment to opening our doors to international opportunities while also promoting a global perspective among our students and faculty. Our internationalization initiatives are a testament to CIT\u2019s vision of producing graduates who are not only technically competent but globally competitive and culturally aware.",
-    name: 'Engr. Bernard Nicolas E. Villamor',
-    title: 'University President, CIT University',
-    photo: '/Bernard.jpg',
-    role: 'University Leadership',
+      "CIT University gave me the foundation to take my thesis project — CodeChum — all the way to an international research conference in Hong Kong. The university's culture of innovation and excellence pushes every student to think beyond the classroom and reach for the global stage.",
+    name: 'Jemar Jude Maranga',
+    title: 'BS Computer Science, Magna Cum Laude | Founder & CEO, CodeChum & GradeChum',
+    // Photo publicly available on LinkedIn and cit.edu TICTalks feature
+    photo: '/Jemar.jpg',
+    role: 'CIT Alumni · Class of 2018',
   },
   {
     id: 'testimonial-mosqueda',
     quote:
       'My internship in Dubai was the most transformative experience of my academic journey. CIT prepared me not just technically but culturally — the university gave me the confidence to compete and excel on an international stage. I am proud to represent CIT University in the global arena.',
-    name: 'Dave Andrey Mosqueda',
-    title: 'BS Architecture Graduate | Dubai Intern, XYZ Designers UAE',
+    name: 'Dave Andrey B. Mosqueda',
+    title: 'BS Architecture Graduate | International Intern, XYZ Designers — Dubai, UAE',
+    // Photo publicly available on cit.edu
     photo: '/Dave.jpg',
-    role: 'CIT Graduate',
+    role: 'CIT Alumni · Class of 2024',
   },
   {
-    id: 'testimonial-faculty',
+    id: 'testimonial-bacalso',
     quote:
-      'The internationalization initiatives at CIT have fundamentally changed how we teach. By integrating global standards into our curriculum and connecting our students with real-world international experiences, we are preparing them for careers that transcend borders.',
-    name: 'Dr. Larmie S. Feliscuzo',
-    title: 'Director, Internationalization Office — CIT University',
-    photo: '/Larmie.png',
-    role: 'IZN Office Director',
+      "Representing CIT University at the ASEAN Cyber Shield Hacking Contest in Jakarta — backed by the Korean government — was a defining moment in my career. CIT did not just teach me cybersecurity; it put me in rooms where I could prove it on an international level.",
+    name: 'Sly Bacalso',
+    title: 'BS Computer Science Graduate | DevOps & Cybersecurity Specialist, CodeChum',
+    // Photo publicly posted on cit.edu official news article
+    photo: '/Sly.jpg',
+    role: 'CIT Alumni · Class of 2024',
   },
 ];
 
@@ -42,11 +45,11 @@ export default function Testimonials() {
             <div className="h-px w-10 bg-cit-gold" />
           </div>
           <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-cit-navy mb-4">
-            Voices from the World
+            Voices from Our Alumni
           </h2>
           <p className="font-opensans text-gray-600 max-w-2xl mx-auto text-base">
-            Hear from the people who have lived CIT's internationalization journey firsthand —
-            our leaders, graduates, and faculty who are shaping a globally competitive CIT.
+            Hear from CIT University graduates who have taken their skills to the world stage —
+            and how a CIT education opened global doors for them.
           </p>
         </div>
 

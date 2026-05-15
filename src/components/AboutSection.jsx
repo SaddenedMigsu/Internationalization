@@ -37,7 +37,7 @@ export default function AboutSection() {
         </div>
 
         <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-cit-navy mb-14">
-          What is Internationalization?
+          About the Office
         </h2>
 
         {/* Two-column layout */}
@@ -48,15 +48,17 @@ export default function AboutSection() {
               The{' '}
               <strong className="text-cit-navy">Internationalization Office of CIT University</strong>,
               under the leadership of{' '}
-              <strong className="text-cit-navy">Dr. Larmie S. Feliscuzo</strong>, drives CIT's vision
-              to produce globally competitive graduates through international partnerships, student and
-              faculty mobility programs, and cross-cultural academic exchanges.
+              <strong className="text-cit-navy">Dr. Larmie S. Feliscuzo</strong>, is the primary
+              bridge connecting CIT University to the global academic and professional community.
+              The office oversees partnerships, student and faculty mobility, and cross-cultural
+              collaboration that define a truly internationalized university experience.
             </p>
             <p className="font-opensans text-gray-600 text-base leading-relaxed mb-8">
-              Our office serves as the primary gateway connecting CIT University to the international
-              academic and industry community — fostering collaboration that enriches the educational
-              experience for every CITean and positions the university as a globally recognized
-              institution of excellence.
+              Established to advance CIT's vision of producing globally competitive graduates,
+              the office works closely with foreign universities, industry leaders, and
+              government agencies to build sustainable international linkages that benefit
+              every CITean — from scholarship opportunities to overseas internships and
+              joint research programs.
             </p>
 
             {/* Key focus areas */}
@@ -117,12 +119,25 @@ export default function AboutSection() {
                   Connected to partners across 6 continents
                 </p>
 
-                {/* Mini flag strip */}
-                <div className="flex justify-center gap-2 mt-6 text-2xl">
-                  {['🇵🇭', '🇫🇷', '🇦🇪', '🇺🇸', '🇯🇵', '🇩🇪', '🇰🇷'].map((flag) => (
-                    <span key={flag} className="hover:scale-125 transition-transform cursor-default" title={flag}>
-                      {flag}
-                    </span>
+                {/* Flag strip — real images via flagcdn.com (no AE/Dubai) */}
+                <div className="flex justify-center gap-3 mt-6 flex-wrap">
+                  {[
+                    { code: 'ph', name: 'Philippines' },
+                    { code: 'fr', name: 'France' },
+                    { code: 'us', name: 'United States' },
+                    { code: 'jp', name: 'Japan' },
+                    { code: 'kr', name: 'South Korea' },
+                  ].map((f) => (
+                    <img
+                      key={f.code}
+                      src={`https://flagcdn.com/w40/${f.code}.png`}
+                      srcSet={`https://flagcdn.com/w80/${f.code}.png 2x`}
+                      width="32"
+                      height="24"
+                      alt={f.name}
+                      title={f.name}
+                      className="rounded shadow-md hover:scale-125 transition-transform cursor-default object-cover"
+                    />
                   ))}
                 </div>
               </div>

@@ -8,6 +8,7 @@ const partners = [
     flag: '🇫🇷',
     flagCode: 'fr',
     note: 'Maternelle Academy — French OJT Program & Language Collaboration',
+    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
     cx: 470,
     cy: 175,
   },
@@ -18,6 +19,7 @@ const partners = [
     flag: '🇺🇸',
     flagCode: 'us',
     note: 'ServiceNow — AI & Digital Workflow Certifications Partnership',
+    link: 'https://cebudailynews.inquirer.net/632871/cit-university-pioneers-first-of-its-kind-global-academic-model-with-servicenow-and-ey-gds',
     cx: 210,
     cy: 180,
   },
@@ -27,6 +29,7 @@ const partners = [
     flag: '🇯🇵',
     flagCode: 'jp',
     note: 'Japanese University Partners — Academic Exchange & Research Collaboration',
+    link: 'https://cit.edu/2026/02/14/cit-university-winter-program-2026-japan/',
     cx: 845,
     cy: 190,
   },
@@ -37,6 +40,7 @@ const partners = [
     flag: '🇰🇷',
     flagCode: 'kr',
     note: 'Korean University Partners — Technology & Innovation Exchange Programs',
+    link: 'https://cit.edu/news-and-updates/',
     cx: 818,
     cy: 185,
   },
@@ -46,6 +50,7 @@ const partners = [
     flag: '🇦🇺',
     flagCode: 'au',
     note: 'Australian University Network — Pacific Region Academic Partnerships',
+    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
     cx: 820,
     cy: 360,
   },
@@ -54,7 +59,8 @@ const partners = [
     name: 'India',
     flag: '🇮🇳',
     flagCode: 'in',
-    note: 'Indian University Partners — Engineering, Technology & Research Collaboration',
+    note: 'O.P. Jindal Global University — Student Mobility & Research Collaboration',
+    link: 'https://cit.edu/2026/01/19/cit-university-strengthens-global-linkages-through-strategic-engagement-with-o-p-jindal-global-university/',
     cx: 690,
     cy: 230,
   },
@@ -63,7 +69,8 @@ const partners = [
     name: 'Taiwan',
     flag: '🇹🇼',
     flagCode: 'tw',
-    note: 'Taiwanese University Partners — Academic Exchange & Innovation Programs',
+    note: 'NCCU & StellarPH — Innovation & Entrepreneurial Exchange',
+    link: 'https://cit.edu/2025/09/01/cit-university-nccu-and-stellarph-forge-stronger-ties-for-innovation-and-global-collaboration/',
     cx: 800,
     cy: 228,
   },
@@ -73,8 +80,19 @@ const partners = [
     flag: '🇲🇾',
     flagCode: 'my',
     note: 'Universiti Sains Malaysia — ASEAN Academic & Cultural Exchange',
+    link: 'https://cit.edu/news-and-updates/',
     cx: 780,
     cy: 280,
+  },
+  {
+    id: 'vietnam',
+    name: 'Vietnam',
+    flag: '🇻🇳',
+    flagCode: 'vn',
+    note: 'Vietnamese University Partners — ASEAN Academic & Research Collaboration',
+    link: 'https://cit.edu/news-and-updates/',
+    cx: 766,
+    cy: 256,
   },
 ];
 
@@ -88,9 +106,11 @@ export default function GlobalMap() {
   const handleEnter = (p) => { setTooltip(p); setActiveId(p.id); };
   const handleLeave = () => { setTooltip(null); setActiveId(null); };
   const handleClick = (p) => {
+    // Toggle active state for map highlight, then open the article
     const next = activeId === p.id ? null : p.id;
     setActiveId(next);
     setTooltip(next ? p : null);
+    if (p.link) window.open(p.link, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -113,8 +133,8 @@ export default function GlobalMap() {
             Our Global Partners
           </h2>
           <p className="font-opensans text-gray-500 max-w-2xl mx-auto text-base">
-            Hover or click the markers to explore CIT University's international partnerships
-            across the globe.
+            Click any marker or pill to read the article about CIT University's
+            international partnerships across the globe.
           </p>
         </div>
 
@@ -301,19 +321,20 @@ export default function GlobalMap() {
           <p className="font-opensans text-gray-500 text-sm mb-5 uppercase tracking-wider">
             Partner Nations
           </p>
-          <div
-            className="grid gap-3 max-w-3xl mx-auto"
-            style={{ gridTemplateColumns: 'repeat(5, 1fr)' }}
-          >
-            {partners.map((p) => (
+          {/* Row 1 — 5 pills */}
+          <div className="flex justify-center gap-3 mx-auto">
+            {partners.slice(0, 5).map((p) => (
               <button
                 key={p.id}
                 id={`flag-pill-${p.id}`}
                 onMouseEnter={() => handleEnter(p)}
                 onMouseLeave={handleLeave}
                 onClick={() => handleClick(p)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
                 style={{
+                  width: '148px',
+                  height: '42px',
+                  flexShrink: 0,
                   borderColor: activeId === p.id ? '#7B1C1C' : '#D1D5DB',
                   color: activeId === p.id ? '#7B1C1C' : '#374151',
                   fontWeight: activeId === p.id ? '600' : '400',
@@ -327,7 +348,39 @@ export default function GlobalMap() {
                   alt={p.name}
                   className="rounded-sm object-cover flex-shrink-0"
                 />
-                <span>{p.name}</span>
+                <span className="truncate">{p.name}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Row 2 — 4 pills, offset by half pill-width + half gap = 80px for brick/window pattern */}
+          <div className="flex justify-center gap-3 mx-auto mt-3" style={{ paddingLeft: '0px' }}>
+            {partners.slice(5).map((p) => (
+              <button
+                key={p.id}
+                id={`flag-pill-${p.id}`}
+                onMouseEnter={() => handleEnter(p)}
+                onMouseLeave={handleLeave}
+                onClick={() => handleClick(p)}
+                className="inline-flex items-center justify-center gap-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
+                style={{
+                  width: '148px',
+                  height: '42px',
+                  flexShrink: 0,
+                  borderColor: activeId === p.id ? '#7B1C1C' : '#D1D5DB',
+                  color: activeId === p.id ? '#7B1C1C' : '#374151',
+                  fontWeight: activeId === p.id ? '600' : '400',
+                }}
+              >
+                <img
+                  src={`https://flagcdn.com/w20/${p.flagCode}.png`}
+                  srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`}
+                  width="20"
+                  height="15"
+                  alt={p.name}
+                  className="rounded-sm object-cover flex-shrink-0"
+                />
+                <span className="truncate">{p.name}</span>
               </button>
             ))}
           </div>
