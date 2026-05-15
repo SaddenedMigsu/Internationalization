@@ -10,7 +10,7 @@ const articles = [
       "Your Path to Global Opportunities Starts Here. The CIT University Winter Program 2026 in Japan offers students a unique, immersive cultural and academic experience at Setsunan University — building cross-cultural competencies and global readiness before graduation.",
     category: "Student Exchange",
     date: "February 14, 2026",
-    imageUrl: "https://cit.edu/wp-content/uploads/2026/02/Japan-Winter-Program-2026.jpg",
+    imageUrl: "/Setsunan.jpeg",
     link: "https://cit.edu/2026/02/14/cit-university-winter-program-2026-japan/",
   },
   {
@@ -20,7 +20,7 @@ const articles = [
       "Building bridges for globally engaged education, CIT University proudly becomes the first Philippine partner of Université de Caen Normandie in France — following the signing of a Memorandum of Understanding (MOU) in June 2025. The partnership opens pathways for student and faculty exchanges, joint research, and international internship opportunities.",
     category: "Partnership",
     date: "July 23, 2025",
-    imageUrl: "https://placehold.co/800x450/7B1C1C/FFFFFF?text=France+MOU+2025",
+    imageUrl: "/France.jpg",
     link: "https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/",
   },
   {
@@ -30,8 +30,8 @@ const articles = [
       "As part of its growing international portfolio, CIT University has forged a partnership with Open Learning, Australia's leading online learning platform — creating new pathways for CIT students to access world-class, industry-aligned digital courses and certifications from Australian institutions.",
     category: "Partnership",
     date: "July 23, 2025",
-    imageUrl: "https://placehold.co/800x450/1D4E89/FFFFFF?text=Open+Learning+Australia",
-    link: "https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/",
+    imageUrl: "/Australia.jpg",
+    link: "https://cit.edu/2025/08/12/cit-university-to-roll-out-ai-powered-openlearning-lms-to-elevate-student-and-faculty-experience/",
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const articles = [
       "CIT University breaks new ground as ServiceNow's first academic partner in the Philippines, in collaboration with EY Global Delivery Services. Nearly 300 BSIT students are undergoing rigorous training on the ServiceNow platform with a clear objective: certification before graduation and job-readiness on day one.",
     category: "Partnership",
     date: "April 2025",
-    imageUrl: "https://placehold.co/800x450/00A388/FFFFFF?text=ServiceNow+%26+EY+GDS",
+    imageUrl: "/ServiceNow.png",
     link: "https://cebudailynews.inquirer.net/632871/cit-university-pioneers-first-of-its-kind-global-academic-model-with-servicenow-and-ey-gds",
   },
   {
@@ -50,7 +50,7 @@ const articles = [
       "CIT-U has entered into a landmark Memorandum of Understanding with Taiwan's National Chengchi University (NCCU), formalized at the Wildcats Innovation Laboratory and hosted by StellarPH. The agreement underscores a shared commitment to entrepreneurial exchange, innovation, and cross-border academic collaboration.",
     category: "Partnership",
     date: "September 1, 2025",
-    imageUrl: "https://placehold.co/800x450/9B2335/FFFFFF?text=NCCU+Taiwan+MOU",
+    imageUrl: "/Taiwan.jpeg",
     link: "https://cit.edu/2025/09/01/cit-university-nccu-and-stellarph-forge-stronger-ties-for-innovation-and-global-collaboration/",
   },
   {
@@ -60,7 +60,7 @@ const articles = [
       "CIT University recently hosted a high-level academic delegation from O.P. Jindal Global University (JGU), one of India's premier institutions. The engagement opened discussions on student mobility, faculty exchange, joint research, and global academic immersion programs — deepening CIT's growing portfolio of international collaborations.",
     category: "Partnership",
     date: "January 19, 2026",
-    imageUrl: "https://placehold.co/800x450/FF6B00/FFFFFF?text=India+%7C+JGU+2026",
+    imageUrl: "/India.jpg",
     link: "https://cit.edu/2026/01/19/cit-university-strengthens-global-linkages-through-strategic-engagement-with-o-p-jindal-global-university/",
   },
 ];
