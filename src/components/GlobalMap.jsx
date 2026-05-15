@@ -165,7 +165,7 @@ export default function GlobalMap() {
           {/* Map image */}
           <div className="relative w-full" style={{ aspectRatio: '1000 / 507' }}>
             <img
-              src="/whitemap.png"
+              src="/mapmaroon.jpg"
               alt="World Map"
               className="absolute inset-0 w-full h-full object-cover"
               draggable="false"

@@ -1,4 +1,5 @@
 import Navbar from '../components/Navbar';
+import SDGHeader from '../components/SDGHeader';
 import ArticleGrid from '../components/ArticleGrid';
 import GlobalMap from '../components/GlobalMap';
 import AboutSection from '../components/AboutSection';
@@ -13,24 +14,26 @@ export default function IznCorner() {
       {/* Sticky Navbar */}
       <Navbar />
 
-      {/* Offset for sticky navbar */}
       <main className="flex-1 pt-[69px]">
-        {/* 1. Featured Articles Grid — first thing users see */}
+        {/* 1. SDG Corner header — matches cit.edu layout */}
+        <SDGHeader />
+
+        {/* 2. Featured Articles Grid */}
         <ArticleGrid />
 
-        {/* 2. Interactive Global Map */}
+        {/* 3. Interactive Global Map */}
         <GlobalMap />
 
-        {/* 3. About Internationalization */}
+        {/* 4. About the Office */}
         <AboutSection />
 
-        {/* 4. Four Pillars */}
+        {/* 5. Four Pillars */}
         <Pillars />
 
-        {/* 5. Testimonials */}
+        {/* 6. Testimonials */}
         <Testimonials />
 
-        {/* 6. Call to Action */}
+        {/* 7. Call to Action */}
         <CTABanner />
       </main>
 

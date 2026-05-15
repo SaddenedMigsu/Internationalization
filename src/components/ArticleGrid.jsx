@@ -12,36 +12,8 @@ export default function ArticleGrid() {
       : articles.filter((a) => a.category === activeCategory);
 
   return (
-    <section id="articles-section" className="py-16 bg-white">
+    <section id="articles-section" className="pt-4 pb-16 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header — plain and editorial */}
-        <div className="text-center mb-10">
-          <h2 className="font-poppins font-bold text-3xl sm:text-4xl text-gray-900 mb-3">
-            IZN Corner
-          </h2>
-          <p className="font-opensans text-gray-500 max-w-2xl mx-auto text-base">
-            Stories, partnerships, and milestones from CIT University's Internationalization Office.
-          </p>
-          <div className="mt-4 mx-auto w-16 h-1 bg-[#7B1C1C]" />
-        </div>
-
-        {/* Category filter pills */}
-        <div className="flex flex-wrap gap-2 justify-center mb-10">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              id={`filter-${cat.toLowerCase().replace(/\s+/g, '-')}`}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold font-opensans border transition-all duration-200 ${
-                activeCategory === cat
-                  ? 'bg-[#7B1C1C] text-white border-[#7B1C1C]'
-                  : 'bg-white text-gray-600 border-gray-300 hover:border-[#7B1C1C] hover:text-[#7B1C1C]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
 
         {/* Cards grid — 3 columns like SDG17 */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
