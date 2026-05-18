@@ -1,5 +1,4 @@
 import Navbar from '../components/Navbar';
-import SDGHeader from '../components/SDGHeader';
 import ArticleGrid from '../components/ArticleGrid';
 import GlobalMap from '../components/GlobalMap';
 import AboutSection from '../components/AboutSection';
@@ -15,25 +14,33 @@ export default function IznCorner() {
       <Navbar />
 
       <main className="flex-1 pt-[69px]">
-        {/* 1. SDG Corner header — matches cit.edu layout */}
-        <SDGHeader />
+        {/* CIT University official header banner */}
+        <div className="w-full flex justify-center bg-white">
+          <img
+            src="/cit-header.png"
+            alt="CIT University — Internationalization"
+            className="w-full object-contain"
+            style={{ maxWidth: '960px', height: 'auto' }}
+            draggable="false"
+          />
+        </div>
 
-        {/* 2. Featured Articles Grid */}
+        {/* 1. Featured Articles Grid with IZN Corner header */}
         <ArticleGrid />
 
-        {/* 3. Interactive Global Map */}
+        {/* 2. Interactive Global Map */}
         <GlobalMap />
 
-        {/* 4. About the Office */}
+        {/* 3. About the Office */}
         <AboutSection />
 
-        {/* 5. Four Pillars */}
+        {/* 4. Four Pillars */}
         <Pillars />
 
-        {/* 6. Testimonials */}
+        {/* 5. Testimonials */}
         <Testimonials />
 
-        {/* 7. Call to Action */}
+        {/* 6. Call to Action */}
         <CTABanner />
       </main>
 

@@ -1,103 +1,110 @@
 import { useState } from 'react';
 
-// Partner markers — coordinates mapped to the 1000×507 viewBox
+// Official CIT-U international partners (from admin records)
 const partners = [
-  {
-    id: 'france',
-    name: 'France',
-    flag: '🇫🇷',
-    flagCode: 'fr',
-    note: 'Maternelle Academy — French OJT Program & Language Collaboration',
-    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
-    cx: 470,
-    cy: 175,
-  },
-
-  {
-    id: 'usa',
-    name: 'United States',
-    flag: '🇺🇸',
-    flagCode: 'us',
-    note: 'ServiceNow — AI & Digital Workflow Certifications Partnership',
-    link: 'https://cebudailynews.inquirer.net/632871/cit-university-pioneers-first-of-its-kind-global-academic-model-with-servicenow-and-ey-gds',
-    cx: 210,
-    cy: 180,
-  },
   {
     id: 'japan',
     name: 'Japan',
     flag: '🇯🇵',
     flagCode: 'jp',
-    note: 'Japanese University Partners — Academic Exchange & Research Collaboration',
+    note: 'Nihon University (MOA) · AI Monozukuri (MOU) · Setsunan University (INTL\' MOU) — Academic exchange & research collaboration',
     link: 'https://cit.edu/2026/02/14/cit-university-winter-program-2026-japan/',
-    cx: 845,
-    cy: 190,
-  },
-
-  {
-    id: 'south-korea',
-    name: 'South Korea',
-    flag: '🇰🇷',
-    flagCode: 'kr',
-    note: 'Korean University Partners — Technology & Innovation Exchange Programs',
-    link: 'https://cit.edu/news-and-updates/',
-    cx: 818,
-    cy: 185,
-  },
-  {
-    id: 'australia',
-    name: 'Australia',
-    flag: '🇦🇺',
-    flagCode: 'au',
-    note: 'Australian University Network — Pacific Region Academic Partnerships',
-    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
-    cx: 820,
-    cy: 360,
-  },
-  {
-    id: 'india',
-    name: 'India',
-    flag: '🇮🇳',
-    flagCode: 'in',
-    note: 'O.P. Jindal Global University — Student Mobility & Research Collaboration',
-    link: 'https://cit.edu/2026/01/19/cit-university-strengthens-global-linkages-through-strategic-engagement-with-o-p-jindal-global-university/',
-    cx: 690,
-    cy: 230,
+    cx: 872, cy: 185,
   },
   {
     id: 'taiwan',
     name: 'Taiwan',
     flag: '🇹🇼',
     flagCode: 'tw',
-    note: 'NCCU & StellarPH — Innovation & Entrepreneurial Exchange',
+    note: 'NCCU & StellarPH (MOU) · Mingshin University of Science & Technology (MOU) · Southern Taiwan University of Science & Technology (Student Exchange Agreement)',
     link: 'https://cit.edu/2025/09/01/cit-university-nccu-and-stellarph-forge-stronger-ties-for-innovation-and-global-collaboration/',
-    cx: 800,
-    cy: 228,
-  },
-  {
-    id: 'malaysia',
-    name: 'Malaysia',
-    flag: '🇲🇾',
-    flagCode: 'my',
-    note: 'Universiti Sains Malaysia — ASEAN Academic & Cultural Exchange',
-    link: 'https://cit.edu/news-and-updates/',
-    cx: 780,
-    cy: 280,
+    cx: 825, cy: 225,
   },
   {
     id: 'vietnam',
     name: 'Vietnam',
     flag: '🇻🇳',
     flagCode: 'vn',
-    note: 'Vietnamese University Partners — ASEAN Academic & Research Collaboration',
+    note: 'Dong Nai Technology University (MOU) · Saigon Business School, Ho Chi Minh City (MOU)',
     link: 'https://cit.edu/news-and-updates/',
-    cx: 766,
-    cy: 256,
+    cx: 795, cy: 255,
+  },
+  {
+    id: 'malaysia',
+    name: 'Malaysia',
+    flag: '🇲🇾',
+    flagCode: 'my',
+    note: 'Universiti Sains Malaysia (MOU) · SEGi University Sdn Bhd, Selangor (MOU)',
+    link: 'https://cit.edu/news-and-updates/',
+    cx: 772, cy: 278,
+  },
+  {
+    id: 'singapore',
+    name: 'Singapore',
+    flag: '🇸🇬',
+    flagCode: 'sg',
+    note: 'IMA Institute of Management Accountants, Inc. — Paya Lebar Square (MOU)',
+    link: 'https://cit.edu/news-and-updates/',
+    cx: 788, cy: 295,
+  },
+  {
+    id: 'indonesia',
+    name: 'Indonesia',
+    flag: '🇮🇩',
+    flagCode: 'id',
+    note: 'Binus University — Jakarta, Indonesia (MOA)',
+    link: 'https://cit.edu/news-and-updates/',
+    cx: 810, cy: 290,
+  },
+  {
+    id: 'india',
+    name: 'India',
+    flag: '🇮🇳',
+    flagCode: 'in',
+    note: 'O.P. Jindal Global University (MOU) · KPR Institute of Engineering & Technology (MOU)',
+    link: 'https://cit.edu/2026/01/19/cit-university-strengthens-global-linkages-through-strategic-engagement-with-o-p-jindal-global-university/',
+    cx: 710, cy: 233,
+  },
+  {
+    id: 'bangladesh',
+    name: 'Bangladesh',
+    flag: '🇧🇩',
+    flagCode: 'bd',
+    note: 'Daffodil International University, Dhaka (MOU) · American International University-Bangladesh (MOU)',
+    link: 'https://cit.edu/news-and-updates/',
+    cx: 740, cy: 222,
+  },
+  {
+    id: 'australia',
+    name: 'Australia',
+    flag: '🇦🇺',
+    flagCode: 'au',
+    note: 'Open Learning — Digital education & online learning partnership',
+    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
+    cx: 838, cy: 368,
+  },
+  {
+    id: 'france',
+    name: 'France',
+    flag: '🇫🇷',
+    flagCode: 'fr',
+    note: 'Université de Caen Normandie — MOU for academic partnership, alumni connections & student mobility',
+    link: 'https://cit.edu/2025/07/23/cit-university-strengthens-global-ties-with-france-through-new-partnerships-and-alumni-connections/',
+    cx: 500, cy: 150,
+  },
+  {
+    id: 'usa',
+    name: 'United States',
+    flag: '🇺🇸',
+    flagCode: 'us',
+    note: 'ServiceNow — AI & Digital Workflow Certifications Partnership (with EY GDS)',
+    link: 'https://cebudailynews.inquirer.net/632871/cit-university-pioneers-first-of-its-kind-global-academic-model-with-servicenow-and-ey-gds',
+    cx: 210, cy: 185,
   },
 ];
 
 // CIT-U home base — Philippines
-const CITU = { cx: 810, cy: 260 };
+const CITU = { cx: 818, cy: 262 };
 
 export default function GlobalMap() {
   const [tooltip, setTooltip] = useState(null);
@@ -106,20 +113,15 @@ export default function GlobalMap() {
   const handleEnter = (p) => { setTooltip(p); setActiveId(p.id); };
   const handleLeave = () => { setTooltip(null); setActiveId(null); };
   const handleClick = (p) => {
-    // Toggle active state for map highlight, then open the article
-    const next = activeId === p.id ? null : p.id;
-    setActiveId(next);
-    setTooltip(next ? p : null);
+    setActiveId(activeId === p.id ? null : p.id);
+    setTooltip(activeId === p.id ? null : p);
     if (p.link) window.open(p.link, '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section
-      id="global-map-section"
-      className="relative py-20 bg-gray-50"
-    >
-
+    <section id="global-map-section" className="relative py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -148,13 +150,8 @@ export default function GlobalMap() {
             .pulse-a { animation: pulseRing 2s ease-out infinite; }
             .pulse-b { animation: pulseRing 2s ease-out infinite 0.7s; }
             .pulse-c { animation: pulseRing 2s ease-out infinite 1.4s; }
-            @keyframes dashFlow {
-              to { stroke-dashoffset: -20; }
-            }
-            .flow-line {
-              stroke-dasharray: 4 6;
-              animation: dashFlow 1.5s linear infinite;
-            }
+            @keyframes dashFlow { to { stroke-dashoffset: -20; } }
+            .flow-line { stroke-dasharray: 4 6; animation: dashFlow 1.5s linear infinite; }
             @keyframes dotBob {
               0%, 100% { transform: translateY(0px); }
               50%       { transform: translateY(-3px); }
@@ -162,7 +159,6 @@ export default function GlobalMap() {
             .home-dot { animation: dotBob 2s ease-in-out infinite; }
           `}</style>
 
-          {/* Map image */}
           <div className="relative w-full" style={{ aspectRatio: '1000 / 507' }}>
             <img
               src="/mapmaroon.jpg"
@@ -171,7 +167,6 @@ export default function GlobalMap() {
               draggable="false"
             />
 
-            {/* SVG overlay — same viewBox as image ratio */}
             <svg
               viewBox="0 0 1000 507"
               className="absolute inset-0 w-full h-full"
@@ -230,27 +225,19 @@ export default function GlobalMap() {
                 const isActive = activeId === p.id;
                 return (
                   <g key={p.id}>
-                    {/* Pulse ring */}
                     <circle
                       cx={p.cx} cy={p.cy}
-                      fill="none"
-                      stroke="#FFC107"
-                      strokeWidth="1.5"
-                      opacity="0"
-                      r="8"
-                      className={cls}
+                      fill="none" stroke="#FFC107" strokeWidth="1.5"
+                      opacity="0" r="8" className={cls}
                     />
-                    {/* Active glow */}
                     {isActive && (
                       <circle cx={p.cx} cy={p.cy} r="16" fill="#FFC107" opacity="0.2" />
                     )}
-                    {/* Main dot */}
                     <circle
                       cx={p.cx} cy={p.cy}
                       r={isActive ? 9 : 7}
                       fill={isActive ? '#FFD54F' : '#FFC107'}
-                      stroke="white"
-                      strokeWidth="2"
+                      stroke="white" strokeWidth="2"
                       filter="url(#glow)"
                       className="cursor-pointer transition-all duration-200"
                       onMouseEnter={() => handleEnter(p)}
@@ -265,29 +252,25 @@ export default function GlobalMap() {
               {tooltip && (() => {
                 const cx = tooltip.cx;
                 const cy = tooltip.cy;
-                const tipW = 205;
-                const tipH = 80;
+                const tipW = 230;
+                const tipH = 90;
                 const tipX = Math.min(Math.max(cx - tipW / 2, 8), 1000 - tipW - 8);
                 const tipY = cy < 110 ? cy + 20 : cy - tipH - 20;
                 return (
                   <g>
-                    {/* Arrow */}
                     <line
                       x1={cx} y1={cy < 110 ? cy + 9 : cy - 9}
                       x2={cx} y2={tipY + (cy < 110 ? 0 : tipH)}
                       stroke="#FFC107" strokeWidth="1.2" opacity="0.6"
                     />
-                    {/* Card */}
                     <rect
                       x={tipX} y={tipY}
                       width={tipW} height={tipH}
                       rx="8" ry="8"
                       fill="#3B0A0A"
-                      stroke="#FFC107"
-                      strokeWidth="1.5"
+                      stroke="#FFC107" strokeWidth="1.5"
                       filter="url(#shadow)"
                     />
-                    {/* Gold top accent */}
                     <rect
                       x={tipX} y={tipY}
                       width={tipW} height="22"
@@ -296,16 +279,14 @@ export default function GlobalMap() {
                     <text
                       x={tipX + tipW / 2} y={tipY + 15}
                       textAnchor="middle"
-                      fill="#FFC107"
-                      fontSize="11"
-                      fontWeight="bold"
-                      fontFamily="Poppins, sans-serif"
+                      fill="#FFC107" fontSize="11"
+                      fontWeight="bold" fontFamily="Poppins, sans-serif"
                     >
                       {tooltip.flag} {tooltip.name}
                     </text>
                     <foreignObject x={tipX + 8} y={tipY + 27} width={tipW - 16} height={tipH - 32}>
                       <div xmlns="http://www.w3.org/1999/xhtml"
-                        style={{ fontSize: '9px', color: 'rgba(255,255,255,0.88)', fontFamily: 'Open Sans, sans-serif', lineHeight: '1.4' }}>
+                        style={{ fontSize: '8.5px', color: 'rgba(255,255,255,0.88)', fontFamily: 'Open Sans, sans-serif', lineHeight: '1.45' }}>
                         {tooltip.note}
                       </div>
                     </foreignObject>
@@ -316,14 +297,14 @@ export default function GlobalMap() {
           </div>
         </div>
 
-        {/* Partner flag pills */}
+        {/* Partner flag pills — row 1: 6, row 2: 5 */}
         <div className="text-center">
           <p className="font-opensans text-gray-500 text-sm mb-5 uppercase tracking-wider">
             Partner Nations
           </p>
-          {/* Row 1 — 5 pills */}
-          <div className="flex justify-center gap-3 mx-auto">
-            {partners.slice(0, 5).map((p) => (
+          {/* Row 1 — 6 pills */}
+          <div className="flex justify-center gap-3 mb-3">
+            {partners.slice(0, 6).map((p) => (
               <button
                 key={p.id}
                 id={`flag-pill-${p.id}`}
@@ -332,30 +313,20 @@ export default function GlobalMap() {
                 onClick={() => handleClick(p)}
                 className="inline-flex items-center justify-center gap-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
                 style={{
-                  width: '148px',
-                  height: '42px',
-                  flexShrink: 0,
+                  width: '148px', height: '42px', flexShrink: 0,
                   borderColor: activeId === p.id ? '#7B1C1C' : '#D1D5DB',
                   color: activeId === p.id ? '#7B1C1C' : '#374151',
                   fontWeight: activeId === p.id ? '600' : '400',
                 }}
               >
-                <img
-                  src={`https://flagcdn.com/w20/${p.flagCode}.png`}
-                  srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`}
-                  width="20"
-                  height="15"
-                  alt={p.name}
-                  className="rounded-sm object-cover flex-shrink-0"
-                />
+                <img src={`https://flagcdn.com/w20/${p.flagCode}.png`} srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`} width="20" height="15" alt={p.name} className="rounded-sm object-cover flex-shrink-0" />
                 <span className="truncate">{p.name}</span>
               </button>
             ))}
           </div>
-
-          {/* Row 2 — 4 pills, offset by half pill-width + half gap = 80px for brick/window pattern */}
-          <div className="flex justify-center gap-3 mx-auto mt-3" style={{ paddingLeft: '0px' }}>
-            {partners.slice(5).map((p) => (
+          {/* Row 2 — 5 pills */}
+          <div className="flex justify-center gap-3">
+            {partners.slice(6).map((p) => (
               <button
                 key={p.id}
                 id={`flag-pill-${p.id}`}
@@ -364,27 +335,19 @@ export default function GlobalMap() {
                 onClick={() => handleClick(p)}
                 className="inline-flex items-center justify-center gap-2 rounded-full border text-sm font-opensans transition-all duration-200 cursor-pointer bg-white"
                 style={{
-                  width: '148px',
-                  height: '42px',
-                  flexShrink: 0,
+                  width: '148px', height: '42px', flexShrink: 0,
                   borderColor: activeId === p.id ? '#7B1C1C' : '#D1D5DB',
                   color: activeId === p.id ? '#7B1C1C' : '#374151',
                   fontWeight: activeId === p.id ? '600' : '400',
                 }}
               >
-                <img
-                  src={`https://flagcdn.com/w20/${p.flagCode}.png`}
-                  srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`}
-                  width="20"
-                  height="15"
-                  alt={p.name}
-                  className="rounded-sm object-cover flex-shrink-0"
-                />
+                <img src={`https://flagcdn.com/w20/${p.flagCode}.png`} srcSet={`https://flagcdn.com/w40/${p.flagCode}.png 2x`} width="20" height="15" alt={p.name} className="rounded-sm object-cover flex-shrink-0" />
                 <span className="truncate">{p.name}</span>
               </button>
             ))}
           </div>
         </div>
+
       </div>
     </section>
   );

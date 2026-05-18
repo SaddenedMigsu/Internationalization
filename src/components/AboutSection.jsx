@@ -5,7 +5,7 @@ export default function AboutSection() {
     {
       id: 'countries-stat',
       icon: '🌍',
-      value: '10+',
+      value: '11+',
       label: 'Countries Reached',
       description: 'Active international partnerships across Asia, Europe, the Middle East, and the Pacific.',
     },
@@ -116,24 +116,30 @@ export default function AboutSection() {
                   CIT's Global Network
                 </h3>
                 <p className="font-opensans text-white/70 text-sm">
-                  Connected to partners across 6 continents
+                  Connected to partners across Asia, Europe & the Pacific
                 </p>
 
-                {/* Flag strip — real images via flagcdn.com (no AE/Dubai) */}
-                <div className="flex justify-center gap-3 mt-6 flex-wrap">
+                <div className="flex justify-center gap-2 mt-6 flex-wrap px-4">
                   {[
                     { code: 'ph', name: 'Philippines' },
+                    { code: 'jp', name: 'Japan' },
+                    { code: 'tw', name: 'Taiwan' },
+                    { code: 'vn', name: 'Vietnam' },
+                    { code: 'my', name: 'Malaysia' },
+                    { code: 'sg', name: 'Singapore' },
+                    { code: 'id', name: 'Indonesia' },
+                    { code: 'in', name: 'India' },
+                    { code: 'bd', name: 'Bangladesh' },
+                    { code: 'au', name: 'Australia' },
                     { code: 'fr', name: 'France' },
                     { code: 'us', name: 'United States' },
-                    { code: 'jp', name: 'Japan' },
-                    { code: 'kr', name: 'South Korea' },
                   ].map((f) => (
                     <img
                       key={f.code}
                       src={`https://flagcdn.com/w40/${f.code}.png`}
                       srcSet={`https://flagcdn.com/w80/${f.code}.png 2x`}
-                      width="32"
-                      height="24"
+                      width="28"
+                      height="21"
                       alt={f.name}
                       title={f.name}
                       className="rounded shadow-md hover:scale-125 transition-transform cursor-default object-cover"
