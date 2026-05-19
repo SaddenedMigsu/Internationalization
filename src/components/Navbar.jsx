@@ -3,12 +3,102 @@ import { useState } from 'react';
 const NAV_LINKS = [
   { label: 'Home', href: 'https://cit.edu/', dropdown: false },
   { label: 'About Us', href: 'https://cit.edu/about-cit/', dropdown: true },
-  { label: 'Academics', href: 'https://cit.edu/academics/', dropdown: true },
-  { label: 'Admission', href: 'https://cit.edu/admission/', dropdown: true },
-  { label: 'Scholarships', href: 'https://cit.edu/scholarships/', dropdown: true },
-  { label: 'Student Life', href: 'https://cit.edu/student-life/', dropdown: true },
+  { label: 'Academics', 
+    href: 'https://cit.edu/academics/', 
+    dropdown: true,
+    items: [
+      {
+        label: 'Basic Education',
+        href: 'https://cit.edu/basic-education/',
+        dropdown: true,
+        items: [
+          {
+            label: 'Elementary School',
+            href: 'https://cit.edu/basic-education/elem/',
+          },
+          {
+            label: 'Colleges/Programs',
+            href: 'https://cit.edu/cit-university-programs/',
+            dropdown: true,
+            items: [
+              {
+                label: 'College of Engineering and Architecture',
+                href: 'https://cit.edu/cit-university-programs/cea/',
+              },
+              {
+                label: 'College of Management, Business and Accountancy',
+                href: 'https://cit.edu/cit-university-programs/cmba/',
+              }
+            ]
+          }
+        ]
+      },
+    ]
+     },
+  { label: 'Admission',
+    href: 'https://cit.edu/admission/',
+    dropdown: true,
+    items: [
+      {
+        label: 'Enrollment',
+        href: 'https://cit.edu/enrollment/',
+      },
+      {
+        label: 'Payment Options',
+        href: 'https://cit.edu/payment-options/'
+      },
+    ] },
+
+  {
+    label: 'Scholarships',
+    href: 'https://cit.edu/scholarships/',
+    dropdown: true,
+    items: [
+      {
+        label: 'Grade 7 Scholarship Program',
+        href: 'https://cit.edu/grade-7-scholarship-program/',
+      },
+      {
+        label: 'Senior High School Scholarship Program',
+        href: 'https://cit.edu/senior-high-school-scholarship-program/',
+      },
+      {
+        label: 'Freshman Academic Scholarship',
+        href: 'https://cit.edu/freshman-academic-scholarship/',
+      },
+      {
+        label: 'Non-Academic Scholarship (NAS)',
+        href: 'https://cit.edu/non-academic-scholarship-nas/',
+      },
+      {
+        label: 'Sponsored Scholarship',
+        href: 'https://cit.edu/sponsored-scholarship/',
+      },
+    ],
+  },
+  {
+    label: 'Student Life',
+    href: 'https://cit.edu/student-life/',
+    dropdown: true,
+    items: [
+      { label: 'Student Success Office', href: 'https://cit.edu/student-success-office/' },
+      { label: 'Teknoy Ikigai Center', href: 'https://tic.seemeconnect.com/' },
+      { label: 'WildCats Lair', href: 'https://lair.education/' },
+      { label: 'AIMS', href: 'https://cituweb.pinnacle.com.ph/aims/students/' },
+      { label: 'WITS', href: 'https://student.cituwits.com/' },
+    ],
+  },
   { label: 'SDG Corner', href: 'https://cit.edu/sdg-corner/', dropdown: false },
-  { label: 'More', href: 'https://cit.edu/', dropdown: true },
+  {
+    label: 'More',
+    href: '#',
+    dropdown: true,
+    items: [
+      { label: 'Blogs', href: 'https://cit.edu/blogs/' },
+      { label: 'Privacy Notice', href: 'https://cit.edu/privacy-notice/' },
+      { label: 'Careers in CIT-U', href: 'https://cit.edu/careers-in-cit-u/' },
+    ],
+  },
   { label: 'News and Updates', href: 'https://cit.edu/news-and-updates/', dropdown: false },
 ];
 
@@ -41,20 +131,46 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <ul className="hidden lg:flex items-center gap-0.5 ml-auto">
-            {NAV_LINKS.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center px-3 py-2 text-[14px] hover:text-[#7B1C1C] transition-colors duration-150 whitespace-nowrap"
-                  style={{ fontFamily: 'Open Sans, sans-serif', color: '#333333', fontWeight: '400' }}
+              {NAV_LINKS.map((link) => (
+                <li
+                  key={link.label}
+                  className="relative group"
                 >
-                  {link.label}
-                  {link.dropdown && <Chevron />}
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center px-3 py-2 text-[14px] hover:text-[#7B1C1C] transition-colors duration-150 whitespace-nowrap"
+                    style={{
+                      fontFamily: 'Open Sans, sans-serif',
+                      color: '#333333',
+                      fontWeight: '400',
+                    }}
+                  >
+                    {link.label}
+                    {link.dropdown && <Chevron />}
+                  </a>
+
+                  {/* Dropdown */}
+                  {link.dropdown && link.items && (
+                    <ul className="absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-none py-2 w-max z-50 border border-gray-100">
+                      {link.items.map((item) => (
+                        <li key={item.label}>
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-[#7B1C1C] transition-colors"
+                            style={{ fontFamily: 'Open Sans, sans-serif' }}
+                          >
+                            {item.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
+              ))}
           </ul>
 
           {/* Right — LAIR icon + WITS */}
