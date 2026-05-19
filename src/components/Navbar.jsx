@@ -206,7 +206,7 @@ const NAV_LINKS = [
       { label: 'WITS', href: 'https://student.cituwits.com/' },
     ],
   },
-  { label: 'SDG Corner', href: 'https://cit.edu/sdg-corner/', dropdown: false },
+
   {
     label: 'More',
     href: '#',
@@ -215,6 +215,8 @@ const NAV_LINKS = [
       { label: 'Blogs', href: 'https://cit.edu/blogs/' },
       { label: 'Privacy Notice', href: 'https://cit.edu/privacy-notice/' },
       { label: 'Careers in CIT-U', href: 'https://cit.edu/careers-in-cit-u/' },
+      { label: 'SDG Corner', href: 'https://cit.edu/sdg-corner/'},
+      { label: 'IZN Corner', href: ''},
     ],
   },
   { label: 'News and Updates', href: 'https://cit.edu/news-and-updates/', dropdown: false },
