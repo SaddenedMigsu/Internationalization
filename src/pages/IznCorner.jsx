@@ -10,21 +10,10 @@ import Footer from '../components/Footer';
 export default function IznCorner() {
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Sticky Navbar */}
+      {/* Official CIT University Navbar */}
       <Navbar />
 
-      <main className="flex-1 pt-[69px]">
-        {/* CIT University official header banner */}
-        <div className="w-full flex justify-center bg-white">
-          <img
-            src="/cit-header.png"
-            alt="CIT University — Internationalization"
-            className="w-full object-contain"
-            style={{ maxWidth: '960px', height: 'auto' }}
-            draggable="false"
-          />
-        </div>
-
+      <main className="flex-1">
         {/* 1. Featured Articles Grid with IZN Corner header */}
         <ArticleGrid />
 
