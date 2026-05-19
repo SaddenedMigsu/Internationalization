@@ -2,7 +2,91 @@ import { useState } from 'react';
 
 const NAV_LINKS = [
   { label: 'Home', href: 'https://cit.edu/', dropdown: false },
-  { label: 'About Us', href: 'https://cit.edu/about-cit/', dropdown: true },
+  { label: 'About Us',
+    href: 'https://cit.edu/about-cit/',
+    dropdown: true,
+    items: [
+      {
+        label: 'Historical Background',
+        href: 'https://cit.edu/historical-background/',
+      },
+      {
+        label: 'Milestone & Recognitions',
+        href: 'https://cit.edu/milestones/',
+      },
+      {
+        label: 'CIT Vision-Mission Primer',
+        href: 'https://cit.edu/cit-vision-mission-primer/',
+      },
+      {
+        label: 'The CIT Motto and Hymn',
+        href: 'https://cit.edu/the-cit-motto-and-hymn/',
+      },
+      {
+        label: 'CIT — University OBE Framework',
+        href: 'https://cit.edu/cit-university-obe-framework/',
+      },
+      {
+        label: 'CIT Major Events',
+        href: 'https://cit.edu/cit-major-events/',
+      },
+      {
+        label: 'Information Directory',
+        href: 'https://cit.edu/information_directory/',
+        dropdown: true,
+        items: [
+          {
+            label: 'Administrative Officials',
+            href: 'https://cit.edu/information_directory/administrative-officials/',
+          },
+          {
+            label: 'Academic Officials',
+            href: 'https://cit.edu/information_directory/academic-officials/',
+          },
+          {
+            label: 'Department Heads',
+            href: 'https://cit.edu/information_directory/department-heads/',
+          },
+          {
+            label: 'Academic Department Chairs',
+            href: 'https://cit.edu/information_directory/academic-department-chairs/',
+          },
+        ]
+      },
+      {
+        label: 'Academic Calendar',
+        dropdown: true,
+        items: [
+          {
+            label: 'College AY 2025 — 2026',
+            href: 'https://cit.edu/collegiate-calendar-for-academic-year-2025-2026/',
+          },
+          {
+            label: 'SHS AY 2025 — 2026',
+            href: 'https://cit.edu/senior-high-calendar-for-academic-year-2025-2026/',
+          },
+          {
+            label: 'JHS AY 2025 — 2026',
+            href: 'https://cit.edu/junior-high-school-calendar-for-academic-year-2025-2026/',
+          },
+          {
+            label: 'Elementary AY 2025 — 2026',
+            href: 'https://cit.edu/elementary-calendar-for-academic-year-2025-2026/',
+          },
+        ]
+      },
+      {
+        label: 'FAQs',
+        href: 'https://cit.edu/frequently-asked-questions-faqs/',
+      },
+      {
+        label: 'Campus Map',
+        href: 'https://cit.edu/campus-map/',
+      }
+
+    ] },
+
+    /* Academics */
   { label: 'Academics', 
     href: 'https://cit.edu/academics/', 
     dropdown: true,
@@ -28,6 +112,40 @@ const NAV_LINKS = [
               {
                 label: 'College of Management, Business and Accountancy',
                 href: 'https://cit.edu/cit-university-programs/cmba/',
+              },
+              {
+                label: 'College of Arts, Sciences and Education',
+                href: 'https://cit.edu/cit-university-programs/case/',
+              },
+              {
+                label: 'College of Nursing and Allied Health Sciences',
+                href: 'https://cit.edu/cit-university-programs/cnahs/',
+              },
+              {
+                label: 'College of Computer Studies',
+                href: 'https://cit.edu/cit-university-programs/ccs/',
+              },
+              {
+                label: 'College of Criminal Justice',
+                href: 'https://cit.edu/cit-university-programs/ccj/',
+              },
+            ]
+          },
+          {
+            label: 'ETEEAP/Prior or Adult Learning',
+            href: 'https://cit.edu/cit-university-programs/ccj/',
+          },
+          {
+            label: 'Institutional Brochure',
+            dropdown: true,
+            items: [
+              {
+                label: 'for Parents and Students',
+                href: 'https://cit.edu/institutional-brochure-for-parents-and-students/',
+              },
+              {
+                label: 'for Partners',
+                href: 'https://cit.edu/institutional-brochure-for-partners/',
               }
             ]
           }
@@ -107,6 +225,20 @@ const Chevron = () => (
   <span style={{ fontSize: '9px', marginLeft: '3px', color: '#000000', lineHeight: 1 }}>&#9660;</span>
 );
 
+// Chevron right icon
+const ChevronRight = () => (
+  <span
+    style={{
+      fontSize: '9px',
+      marginLeft: '6px',
+      color: '#000000',
+      lineHeight: 1,
+    }}
+  >
+    &#9654;
+  </span>
+);
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -138,8 +270,6 @@ export default function Navbar() {
                 >
                   <a
                     href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="flex items-center px-3 py-2 text-[14px] hover:text-[#7B1C1C] transition-colors duration-150 whitespace-nowrap"
                     style={{
                       fontFamily: 'Open Sans, sans-serif',
@@ -155,16 +285,35 @@ export default function Navbar() {
                   {link.dropdown && link.items && (
                     <ul className="absolute left-0 top-full hidden group-hover:block bg-white shadow-lg rounded-none py-2 w-max z-50 border border-gray-100">
                       {link.items.map((item) => (
-                        <li key={item.label}>
+                        <li
+                          key={item.label}
+                          className="relative group/sub"
+                        >
                           <a
                             href={item.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-[#7B1C1C] transition-colors"
+                            className="flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-[#7B1C1C] transition-colors whitespace-nowrap"
                             style={{ fontFamily: 'Open Sans, sans-serif' }}
                           >
-                            {item.label}
+                            <span>{item.label}</span>
+                            {item.dropdown && <ChevronRight />}
                           </a>
+
+                          {/* Nested Dropdown */}
+                          {item.dropdown && item.items && (
+                            <ul className="absolute left-full top-0 hidden group-hover/sub:block bg-white shadow-lg py-2 w-max z-50 border border-gray-100">
+                              {item.items.map((subitem) => (
+                                <li key={subitem.label}>
+                                  <a
+                                    href={subitem.href}
+                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-[#7B1C1C] transition-colors whitespace-nowrap"
+                                    style={{ fontFamily: 'Open Sans, sans-serif' }}
+                                  >
+                                    {subitem.label}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -178,8 +327,6 @@ export default function Navbar() {
             {/* LAIR */}
             <a
               href="https://lair.education/"
-              target="_blank"
-              rel="noopener noreferrer"
               title="LAIR — Learning & AI Resource"
               className="flex items-center"
             >
@@ -194,8 +341,6 @@ export default function Navbar() {
             {/* WITS */}
             <a
               href="https://student.cituwits.com/"
-              target="_blank"
-              rel="noopener noreferrer"
               className="font-bold text-sm hover:opacity-75 transition-opacity"
               style={{ color: '#CC0000', fontFamily: 'Open Sans, sans-serif', letterSpacing: '0.04em' }}
             >
