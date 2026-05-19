@@ -20,14 +20,14 @@ const testimonials = [
     role: 'CIT Alumni · Class of 2024',
   },
   {
-    id: 'testimonial-bacalso',
+    id: 'testimonial-siago',
     quote:
-      "Representing CIT University at the ASEAN Cyber Shield Hacking Contest in Jakarta — backed by the Korean government — was a defining moment in my career. CIT did not just teach me cybersecurity; it put me in rooms where I could prove it on an international level.",
-    name: 'Sly Bacalso',
-    title: 'BS Computer Science Graduate | DevOps & Cybersecurity Specialist, CodeChum',
-    // Photo publicly posted on cit.edu official news article
-    photo: '/Sly.jpg',
-    role: 'CIT Alumni · Class of 2024',
+      "Our journey at CIT University shaped us into resilient and globally minded engineers. From overcoming academic challenges to striving for excellence, CIT-U gave us the confidence to pursue opportunities beyond borders and succeed on an international level.",
+    name: 'Jelly Ann Siago & Jolly Babe Siago',
+    title: 'BS Civil Engineering Graduate | BS Electrical Engineering Graduate, CIT University',
+    // Photo publicly posted on CIT University feature article
+    photo: '/Siago.jpg',
+    role: 'CIT Alumni · Class of 2025',
   },
 ];
 

@@ -119,33 +119,7 @@ export default function AboutSection() {
                   Connected to partners across Asia, Europe & the Pacific
                 </p>
 
-                <div className="flex justify-center gap-2 mt-6 flex-wrap px-4">
-                  {[
-                    { code: 'ph', name: 'Philippines' },
-                    { code: 'jp', name: 'Japan' },
-                    { code: 'tw', name: 'Taiwan' },
-                    { code: 'vn', name: 'Vietnam' },
-                    { code: 'my', name: 'Malaysia' },
-                    { code: 'sg', name: 'Singapore' },
-                    { code: 'id', name: 'Indonesia' },
-                    { code: 'in', name: 'India' },
-                    { code: 'bd', name: 'Bangladesh' },
-                    { code: 'au', name: 'Australia' },
-                    { code: 'fr', name: 'France' },
-                    { code: 'us', name: 'United States' },
-                  ].map((f) => (
-                    <img
-                      key={f.code}
-                      src={`https://flagcdn.com/w40/${f.code}.png`}
-                      srcSet={`https://flagcdn.com/w80/${f.code}.png 2x`}
-                      width="28"
-                      height="21"
-                      alt={f.name}
-                      title={f.name}
-                      className="rounded shadow-md hover:scale-125 transition-transform cursor-default object-cover"
-                    />
-                  ))}
-                </div>
+
               </div>
             </div>
 
